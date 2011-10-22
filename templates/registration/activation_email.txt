@@ -1,0 +1,7 @@
+Thank you for joining Otto Zen!
+
+Please activate your account. If you do not activate within {{ expiration_days }} days your account may be deleted.
+
+{{site}}/activate/{{ activation_key }}
+
+Thank you!
