@@ -1,19 +1,13 @@
-from datetime import datetime, timedelta
 import cronjobs
 
 from alerts.models import Commute
 
 @cronjobs.register
 def send_alerts():
-    now = datetime.now()
-    buffer = timedelta(minutes=10)
-    range_start = now - buffer
-    range_end = now + buffer
-    commutes = Commute.objects.filter(start_time__gte=range_start).filter(start_time__lte=range_end)
+    commutes = Commute.objects.get_timely_commutes()
     for commute in commutes:
         print(commute)
     print "Look for traffic incidents along the route"
     print "Get directions objects from Google Maps from start address to end address"
     print "For all the steps on all the routes from start address to end address, query the trif data for nearby incidents"
     print "Send text messages via twilio if you find any"
-
