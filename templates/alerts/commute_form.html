@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends 'base.html' %}
 
+
+{% block head %}
 <style>
 	
 	html, body{
@@ -235,10 +235,8 @@ $script.ready(['jquery'], function(){
 });
 	
 </script>
-
-</head>
-<body>
-
+{% endblock %}
+{% block body %}
 	<h2>Welcome, {{ user.username }}.</h2>
 	<h3>Add a commute</h3>
 
@@ -255,7 +253,4 @@ $script.ready(['jquery'], function(){
 	</form>
 
 	<div id="gmapCont"></div>
-
-</body>
-
-</html>
+{% endblock %}

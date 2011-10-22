@@ -20,3 +20,13 @@ class Commute(models.Model):
 
     def __unicode__(self):
         return self.user.username + ' from ' + self.start_address + ' to ' + self.end_address
+
+class Alert(models.Model):
+    user = models.ForeignKey(User)
+    commute = models.ForeignKey(Commute)
+    created = models.DateTimeField(auto_now_add=True)
+    text = models.CharField(max_length=255)
+    sent = models.BooleanField()
+
+    def __unicode__(self):
+        return '%s on %s' % (self.commute, self.created)
