@@ -74,8 +74,6 @@ $script.ready(['jquery'], function(){
 					mapsApiUrl: 'http://maps.googleapis.com/maps/api/js?sensor=false',
 					contId: 'gmapCont',
 					mapTypeId: 'ROADMAP'
-					//center: new google.maps.LatLng(36.151737,-95.990295), //tulsa downtown
-					//mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
 			
 			for (var key in config) {
@@ -104,7 +102,8 @@ $script.ready(['jquery'], function(){
 			me.endAddy = '';
 			me.currentRoute = null;
 			me.confirmBttn;
-			
+			me.waypoints = [];
+			me.dblclickListener;
 			
 			me.init = function(){
 				console.log('herro init', me, 'google', google);
@@ -127,6 +126,21 @@ $script.ready(['jquery'], function(){
 					mapTypeId: google.maps.MapTypeId[ me.mapTypeId ]
 				});
 				
+				//add a dblclick listener to deal with way points
+				google.maps.event.addListener( me.map, 'dblclick', me.mapDoubleClick, false );
+				
+			};
+			
+			me.mapDoubleClick = function(e){
+				console.log('mapDblClick', e);
+				
+				//make sure route is rendered
+				if ( me.currentRoute ) {
+					console.log( me.currentRoute );
+
+//					me.waypoints.push( new google.maps.LatLng() );
+				}
+
 			};
 			
 			me.getRoute = function(){
@@ -138,25 +152,31 @@ $script.ready(['jquery'], function(){
 					origin: me.startAddy,
 					destination: me.endAddy,
 					travelMode: google.maps.TravelMode.DRIVING
-				}, function(response, status) {
-					if (status == google.maps.DirectionsStatus.OK) {
-						me.currentRoute = response.routes;
-							
-						console.log('directions gotten', response, me.currentRoute);	
-						
-						//make a confirm button
-						me.printConfirmBttn();
-						
-						//display the directions on the map
-						me.directionsDisplay.setMap( me.map );
-						me.directionsDisplay.setDirections(response);
-					} else {
-						//the directions couldn't be found for some reason, most likely cause there is no route, but could be server error
-						alert('Something went wrong fetching the directions: ' + status);
-						me.currentRoute = null;
-					}
-				});
+				}, me.directionsServiceCallback);
 
+			};
+			
+			me.directionsServiceCallback = function(response, status){
+				if (status == google.maps.DirectionsStatus.OK) {
+					me.currentRoute = response.routes;
+					
+					//disable double click zoom when route is showing
+					me.map.setOptions({ disableDoubleClickZoom: true });
+						
+					console.log('directions gotten', response, me.currentRoute);	
+					
+					//make a confirm button
+					me.printConfirmBttn();
+					
+					//display the directions on the map
+					me.directionsDisplay.setMap( me.map );
+					me.directionsDisplay.setDirections(response);
+				} else {
+					//the directions couldn't be found for some reason, most likely cause there is no route, but could be server error
+					alert('Something went wrong fetching the directions: ' + status);
+					me.currentRoute = null;
+					me.map.setOptions({ disableDoubleClickZoom: false });
+				}
 			};
 			
 			me.printConfirmBttn = function(){
@@ -174,10 +194,6 @@ $script.ready(['jquery'], function(){
 				console.log('confirmation clicked', me.form.serialize() );
 				
 				window.location.href = window.location.href+'?'+me.form.serialize();
-				
-				//$.post( window.location.href, me.form.serialize(), function( data, status ){
-				//	console.log( 'POST CALLBACK', data, status );
-				//});
 				
 			};
 			
@@ -228,6 +244,7 @@ $script.ready(['jquery'], function(){
 
 	<form id="add_commute_form" action="/commutes/add" method="post">
 		<input type="hidden" name="user" value="{{user.id}}" />
+		<input type="hidden" name="waypoints" value="" />
 		<label>Start Time:</label>
 		<input type="text" name="start_time" placeholder="Start Time" />
 		<label>Start Address:</label>
