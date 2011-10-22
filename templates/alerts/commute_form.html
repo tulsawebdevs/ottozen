@@ -1,1 +1,104 @@
-Adding a new commute
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+</style>
+
+
+<script type="text/javascript">
+/*!
+  * $script.js v1.3
+  * https://github.com/ded/script.js
+  * Copyright: @ded & @fat - Dustin Diaz, Jacob Thornton 2011
+  * Follow our software http://twitter.com/dedfat
+  * License: MIT
+  */
+!function(a,b,c){function t(a,c){var e=b.createElement("script"),f=j;e.onload=e[o]=function(){e[m]&&!/^c|loade/.test(e[m])||f||(e.onload=e[o]=null,f=1,c())},e.async=1,e.src=a,d.insertBefore(e,d.firstChild)}function q(a,b){p(a,function(a){return!b(a)})}var d=b.getElementsByTagName("head")[0],e={},f={},g={},h={},i="string",j=!1,k="push",l="DOMContentLoaded",m="readyState",n="addEventListener",o="onreadystatechange",p=function(a,b){for(var c=0,d=a.length;c<d;++c)if(!b(a[c]))return j;return 1};!b[m]&&b[n]&&(b[n](l,function r(){b.removeEventListener(l,r,j),b[m]="complete"},j),b[m]="loading");var s=function(a,b,d){function o(){if(!--m){e[l]=1,j&&j();for(var a in g)p(a.split("|"),n)&&!q(g[a],n)&&(g[a]=[])}}function n(a){return a.call?a():e[a]}a=a[k]?a:[a];var i=b&&b.call,j=i?b:d,l=i?a.join(""):b,m=a.length;c(function(){q(a,function(a){h[a]?(l&&(f[l]=1),o()):(h[a]=1,l&&(f[l]=1),t(s.path?s.path+a+".js":a,o))})},0);return s};s.get=t,s.ready=function(a,b,c){a=a[k]?a:[a];var d=[];!q(a,function(a){e[a]||d[k](a)})&&p(a,function(a){return e[a]})?b():!function(a){g[a]=g[a]||[],g[a][k](b),c&&c(d)}(a.join("|"));return s};var u=a.$script;s.noConflict=function(){a.$script=u;return this},typeof module!="undefined"&&module.exports?module.exports=s:a.$script=s}(this,document,setTimeout)
+
+//async dependency loading
+$script('//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', 'jquery');
+$script.ready(['jquery'], function(){
+	
+	(function($){
+		
+		$(document).ready(function(){
+			
+			console.log(' herro ready');
+			
+			var oMap = new ottoMap({});
+			
+			//developing
+			window['oMap'] = oMap;
+			
+		});
+		
+		function ottoMap(config){
+			//default configurable variables
+			var me = this,
+				defaults = {
+					zoom: 11,
+					centerLat: 36.151737,
+					centerLng: -95.990295
+					//center: new google.maps.LatLng(36.151737,-95.990295), //tulsa downtown
+					//mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+		
+			for (var key in config) {
+				defaults[key] = config[key] || defaults[key];
+			}
+		
+			for (var key in defaults) {
+				me[key] = defaults[key];
+			}
+		
+			//non-configurable constants
+			//me.CONSTANT = 'constant';
+			me.init = function(){
+				
+				console.log('herro init', me);
+				
+			};
+			
+			me.loadGmapApi = function(){
+				$.getScript( 'http://maps.googleapis.com/maps/api/js?sensor=false', function(data){
+					
+					console.log('getScript gotten', google);
+				});
+			};
+			//me.init();
+			
+			if ( !google || !google.maps )
+				me.loadGmapApi();
+			
+			return me;		
+		}
+		
+	})(jQuery);
+	
+});
+	
+</script>
+
+</head>
+<body>
+
+	<h2>Welcome, {{ user.username }}.</h2>
+	<h3>Add a commute</h3>
+
+	<form action="/commutes/add" method="post">
+		<input type="hidden" name="user" value="{{user.id}}" />
+		<label>Start Time:</label>
+		<input type="text" name="start_time" placeholder="Start Time" />
+		<label>Start Address:</label>
+		<input type="text" name="start_address" placeholder="Ex: 123 Main Street" />
+		<label>End Address:</label>
+		<input type="text" name="end_address" placeholder="Ex: 987 West Nowhere Avenue" />
+		<button type="submit">Add</button>
+	</form>
+
+	<div id="gmapCont"></div>
+
+</body>
+
+</html>

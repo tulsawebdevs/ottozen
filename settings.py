@@ -115,6 +115,10 @@ TEMPLATE_DIRS = (
     path('templates'),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+	"django.contrib.auth.context_processors.auth",
+)
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
