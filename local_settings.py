@@ -1,3 +1,5 @@
+from settings import *
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -9,3 +11,13 @@ DATABASES = {
     }
 }
 DEBUG=True
+
+MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+)
+
+INSTALLED_APPS = INSTALLED_APPS + (
+    'debug_toolbar',
+)
+
+INTERNAL_IPS = ('127.0.0.1')

@@ -127,9 +127,12 @@ INSTALLED_APPS = (
     'alerts',
     'cronjobs',
     'users',
+    'registration',
 )
 
 AUTH_PROFILE_MODULE = 'users.UserProfile'
+
+ACCOUNT_ACTIVATION_DAYS = 7
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
