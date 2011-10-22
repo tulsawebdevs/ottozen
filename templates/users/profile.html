@@ -1,0 +1,17 @@
+Test Profile
+
+
+<div id="user_data">
+  <span id="label">Username: </span> {{ user.username }}
+</div>
+
+
+<h3>Commutes</h3>
+
+<ul>
+{% for commute in commutes %}
+
+<li><div class="time">{{commute.start_time}}</div><div class="from">From: {{commute.start_address}}</div><div class="to">To: {{commute.end_address}}</div>
+
+{% endfor %}
+</ul>
