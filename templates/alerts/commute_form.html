@@ -16,6 +16,23 @@
 		width: 600px;
 	}
 	
+	#add_commute_confirm{
+		
+		margin: 12px auto;
+		display: block;
+		font-size: 16px;
+		color: #666;
+		line-height: 24px;
+		background: rgba( 100,255,100,0.3 );
+		border: 1px solid rgb( 100, 255, 100 );
+	}
+	#add_commute_confirm:hover{
+		background: rgba( 100,255,100,0.5 ) ;
+	}
+	#add_commute_confirm:active{
+		background: rgba( 100,255,100,0.7 ) ;
+	}
+	
 </style>
 
 <script src="//maps.googleapis.com/maps/api/js?sensor=true" type="text/javascript"></script>
@@ -86,6 +103,8 @@ $script.ready(['jquery'], function(){
 			me.startAddy = '';
 			me.endAddy = '';
 			me.currentRoute = null;
+			me.confirmBttn;
+			
 			
 			me.init = function(){
 				console.log('herro init', me, 'google', google);
@@ -125,6 +144,9 @@ $script.ready(['jquery'], function(){
 							
 						console.log('directions gotten', response, me.currentRoute);	
 						
+						//make a confirm button
+						me.printConfirmBttn();
+						
 						//display the directions on the map
 						me.directionsDisplay.setMap( me.map );
 						me.directionsDisplay.setDirections(response);
@@ -137,6 +159,28 @@ $script.ready(['jquery'], function(){
 
 			};
 			
+			me.printConfirmBttn = function(){
+				if ( !me.confirmBttn ) {
+					me.confirmBttn = $('<button />', { id: 'add_commute_confirm', text: 'Route is correct' })
+						.click(me.confirmClick)
+						.insertBefore( me.cont );
+				} else {
+					me.confirmBttn.show();
+				}
+			};
+			
+			me.confirmClick = function(){
+				//everything is alright, so submit the form
+				console.log('confirmation clicked', me.form.serialize() );
+				
+				window.location.href = window.location.href+'?'+me.form.serialize();
+				
+				//$.post( window.location.href, me.form.serialize(), function( data, status ){
+				//	console.log( 'POST CALLBACK', data, status );
+				//});
+				
+			};
+			
 			me.configureForm = function(){
 				//get that
 				me.form = $('#add_commute_form');
@@ -146,6 +190,10 @@ $script.ready(['jquery'], function(){
 			
 			me.formSubmit = function(e){
 				e.preventDefault();
+				
+				//hide the confirm button if it was showing
+				if ( me.confirmBttn )
+					me.confirmBttn.hide();
 				
 				//console.log( 'form submit', me.form.serialize() );
 			
