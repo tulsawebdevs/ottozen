@@ -7,7 +7,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'commute_alert.views.home', name='home'),
     # url(r'^commute_alert/', include('commute_alert.foo.urls')),
-    (r'^accounts/', include('registration.urls')),
+    ('', include('registration.urls')),
     ('', include('alerts.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
