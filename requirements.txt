@@ -3,3 +3,4 @@ South==0.7.3
 django-cronjobs
 requests==0.6.6
 django-registration==0.7
+django-debug-toolbar==0.8.4
