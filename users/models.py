@@ -7,6 +7,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     home_address = models.CharField(max_length=255, blank=True)
     home_city = models.CharField(max_length=255, blank=True)
+    mobile_num = models.CharField(max_length=10, default='9189189189')
 
     def __unicode__(self):
         return self.user.username + ' Profile'
