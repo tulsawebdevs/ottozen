@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 class Commute(models.Model):
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User)
     start_address = models.CharField(max_length=255)
     start_time = models.TimeField()
     end_address = models.CharField(max_length=255)
