@@ -11,11 +11,11 @@ Test Profile
 
 <h3>Commutes</h3>
 
-<ul>
+<ol>
 {% for commute in commutes %}
 
-<li><div class="time">{{commute.start_time}}</div><div class="from">From: {{commute.start_address}}</div><div class="to">To: {{commute.end_address}}</div>
+<li><span class="time">{{commute.start_time}}</span><span class="from">From: {{commute.start_address}}</span><span class="to">To: {{commute.end_address}}</span></li>
 
 {% endfor %}
-</ul>
+</ol>
 {% endblock %}
