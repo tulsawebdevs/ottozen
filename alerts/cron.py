@@ -1,13 +1,15 @@
 from datetime import datetime
-from urllib import quote
-import requests
 import json
+from math import sin, cos, asin, radians, sqrt
+from urllib import quote
 
 import cronjobs
+from django.conf import settings
+import requests
+from twilio.rest import TwilioRestClient
 
 from alerts.models import Commute, Alert
 
-from math import sin, cos, asin, radians, sqrt
 
 now = datetime.now()
 
@@ -59,4 +61,16 @@ def store_alerts():
 
 @cronjobs.register
 def send_alerts():
-    print "Send text messages via twilio if you find any"
+    client = TwilioRestClient(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+    unsent_alerts = Alert.objects.filter(created__year=now.year, created__month=now.month, created__day=now.day, sent=False)
+    for alert in unsent_alerts:
+        try:
+            client.sms.messages.create(
+                to=alert.user.get_profile().mobile_num,
+                from_='4155992671',
+                body=alert.text)
+            alert.sent=True
+            alert.save()
+        except:
+            pass
+        print("Sent text: %s" % alert.text)
