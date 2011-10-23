@@ -23,7 +23,7 @@
 			var form = $('#login-cont').find('form'),
 				uname = form.find('[name="dummy_name"]'),
 				pass = form.find('[name="password"]'),
-				errorCont = form.find('.login-error');
+				errorCont = form.find('.login_error');
 			
 			form.submit(function(e){
 				
@@ -42,7 +42,7 @@
 					
 					console.log('login error');
 					
-					errorCont.html( data ).show();
+					errorCont.html(data.responseText).show();
 					
 				});
 				

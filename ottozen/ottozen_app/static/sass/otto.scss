@@ -81,6 +81,9 @@ input{
 			@include float-right;
 			margin-right: 10px;
 		}
+        & .login_error {
+            color: red;
+        }
 	}
 }
 
