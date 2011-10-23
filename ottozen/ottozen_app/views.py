@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.create_update import create_object
 
-from forms import ProfileForm
+from forms import LoginForm, ProfileForm
 from models import Route, UserProfile
 
 def home(request):
@@ -15,11 +15,15 @@ def myroutes(request):
   return render(request, 'myroutes.html')
 
 def login(request):
-  success = True
-  if success:
-    return HttpResponse('OK', status=200)
+  form = LoginForm(request.REQUEST)
+  if form.is_valid():
+    message = 'OK'
+    status = 200
   else:
-    return HttpResponse('Failed', status=401)
+    message = 'Bad Form'
+    status = 401
+    
+  return HttpResponse(message, status=status)
 
 def old_add(request):
     return create_object(request, model=Route, login_required=True,
