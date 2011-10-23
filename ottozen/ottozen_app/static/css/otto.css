@@ -418,18 +418,17 @@ input:focus {
 
 /* line 39, ../sass/otto.scss */
 #banner {
-  margin-bottom: 1.5em;
   padding-top: 0.75em;
   padding-left: 1em;
   padding-right: 1em;
   padding-bottom: 1.5em;
 }
-/* line 47, ../sass/otto.scss */
+/* line 46, ../sass/otto.scss */
 #banner h2.logo {
   display: inline;
   float: left;
 }
-/* line 49, ../sass/otto.scss */
+/* line 48, ../sass/otto.scss */
 #banner h2.logo a {
   text-indent: -9999px;
   display: block;
@@ -437,33 +436,45 @@ input:focus {
   height: 100px;
   background: url("../img/Ottologo.png");
 }
-/* line 58, ../sass/otto.scss */
-#banner #login-box {
+/* line 57, ../sass/otto.scss */
+#banner #login-cont {
   display: inline;
   float: right;
   display: inline-block;
+  width: 200px;
 }
-/* line 62, ../sass/otto.scss */
-#banner #login-box h3 {
+/* line 63, ../sass/otto.scss */
+#banner #login-cont h3 {
   font-size: 1.333em;
   line-height: 2.25em;
-  color: #8695a8;
+  color: #2d72b1;
 }
-/* line 66, ../sass/otto.scss */
-#banner #login-box label, #banner #login-box input {
-  display: inline-block;
-  vertical-align: top;
+/* line 67, ../sass/otto.scss */
+#banner #login-cont label, #banner #login-cont input {
+  display: block;
+  margin-bottom: 0.375em;
 }
 /* line 71, ../sass/otto.scss */
-#banner #login-box label {
+#banner #login-cont label {
   margin-right: 1em;
 }
 /* line 74, ../sass/otto.scss */
-#banner #login-box input {
-  width: 60%;
+#banner #login-cont input {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  font-size: 1em;
+  line-height: 1.875em;
+}
+/* line 79, ../sass/otto.scss */
+#banner #login-cont button {
+  font-size: 1em;
+  line-height: 1.875em;
+  display: inline;
+  float: right;
+  margin-right: 10px;
 }
 
-/* line 80, ../sass/otto.scss */
+/* line 87, ../sass/otto.scss */
 .base.bttn {
   font-family: sans-serif;
   padding: 0 1em;
@@ -517,12 +528,12 @@ input:focus {
   background: #b3b3b3;
 }
 
-/* line 85, ../sass/otto.scss */
+/* line 92, ../sass/otto.scss */
 a.base.bttn {
   text-decoration: none;
 }
 
-/* line 89, ../sass/otto.scss */
+/* line 96, ../sass/otto.scss */
 #maincontent {
   display: block;
   padding-top: 1.5em;
@@ -541,14 +552,14 @@ a.base.bttn {
   -pie-background: linear-gradient(top, #8695a8 0%, #dfe3e8 1%, #ffffff 8%);
   background: linear-gradient(top, #8695a8 0%, #dfe3e8 1%, #ffffff 8%);
 }
-/* line 101, ../sass/otto.scss */
+/* line 108, ../sass/otto.scss */
 #maincontent h1 {
   font-size: 2.333em;
   line-height: 1.286em;
   text-shadow: #666666 -1px 1px 2px;
   margin-bottom: 0.375em;
 }
-/* line 107, ../sass/otto.scss */
+/* line 114, ../sass/otto.scss */
 #maincontent #add_commute_form {
   display: inline;
   float: right;
@@ -558,7 +569,7 @@ a.base.bttn {
   margin-bottom: 1.5em;
   margin-right: 1em;
 }
-/* line 121, ../sass/otto.scss */
+/* line 128, ../sass/otto.scss */
 #maincontent #add_commute_form label {
   color: #2c6fad;
   font-size: 1.167em;
@@ -567,7 +578,7 @@ a.base.bttn {
   margin-bottom: 0.375em;
   display: block;
 }
-/* line 131, ../sass/otto.scss */
+/* line 138, ../sass/otto.scss */
 #maincontent #add_commute_form input {
   margin-bottom: 1.5em;
   width: 160px;
@@ -576,7 +587,7 @@ a.base.bttn {
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
-/* line 142, ../sass/otto.scss */
+/* line 149, ../sass/otto.scss */
 #maincontent #gmapCont {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
@@ -585,7 +596,7 @@ a.base.bttn {
   width: 500px;
 }
 
-/* line 161, ../sass/otto.scss */
+/* line 168, ../sass/otto.scss */
 #add_commute_confirm {
   margin: 12px auto;
   display: block;
@@ -596,17 +607,17 @@ a.base.bttn {
   border: 1px solid #64ff64;
 }
 
-/* line 171, ../sass/otto.scss */
+/* line 178, ../sass/otto.scss */
 #add_commute_confirm:hover {
   background: rgba(100, 255, 100, 0.5);
 }
 
-/* line 174, ../sass/otto.scss */
+/* line 181, ../sass/otto.scss */
 #add_commute_confirm:active {
   background: rgba(100, 255, 100, 0.7);
 }
 
-/* line 180, ../sass/otto.scss */
+/* line 187, ../sass/otto.scss */
 .clear {
   *zoom: 1;
 }
@@ -617,13 +628,13 @@ a.base.bttn {
   clear: both;
 }
 
-/* line 183, ../sass/otto.scss */
+/* line 190, ../sass/otto.scss */
 .right {
   display: inline;
   float: right;
 }
 
-/* line 186, ../sass/otto.scss */
+/* line 193, ../sass/otto.scss */
 .addressbox {
   background: none repeat scroll 0 0 #EEEEEE;
   display: block;
@@ -634,17 +645,17 @@ a.base.bttn {
   width: 300px;
 }
 
-/* line 195, ../sass/otto.scss */
+/* line 202, ../sass/otto.scss */
 .addressbox label {
   margin: 1em;
 }
 
-/* line 204, ../sass/otto.scss */
+/* line 211, ../sass/otto.scss */
 #leftnav > div, #rightnav > div {
   border: 1px solid #ffe102;
   margin-bottom: 1.5em;
 }
-/* line 208, ../sass/otto.scss */
+/* line 215, ../sass/otto.scss */
 #leftnav > div header, #rightnav > div header {
   padding-left: 1em;
   padding-right: 1em;
@@ -652,7 +663,7 @@ a.base.bttn {
   padding-bottom: 0.75em;
   background: #fff39b;
 }
-/* line 215, ../sass/otto.scss */
+/* line 222, ../sass/otto.scss */
 #leftnav > div section, #rightnav > div section {
   padding-left: 1em;
   padding-right: 1em;
@@ -660,19 +671,19 @@ a.base.bttn {
   padding-bottom: 0.75em;
   background: #fffce5;
 }
-/* line 223, ../sass/otto.scss */
+/* line 230, ../sass/otto.scss */
 #leftnav > div section img, #leftnav > div section iframe, #rightnav > div section img, #rightnav > div section iframe {
   display: block;
   margin-bottom: 0.75em;
 }
 
-/* line 232, ../sass/otto.scss */
+/* line 239, ../sass/otto.scss */
 #leftnav {
   display: inline;
   float: left;
   margin-top: 1.5em;
 }
-/* line 237, ../sass/otto.scss */
+/* line 244, ../sass/otto.scss */
 #leftnav > div {
   display: inline-block;
   margin-right: 20px;
@@ -680,14 +691,14 @@ a.base.bttn {
   vertical-align: top;
 }
 
-/* line 246, ../sass/otto.scss */
+/* line 253, ../sass/otto.scss */
 #rightnav {
   display: inline;
   float: right;
   width: 200px;
 }
 
-/* line 252, ../sass/otto.scss */
+/* line 259, ../sass/otto.scss */
 #maincont {
   width: 740px;
   display: block;
