@@ -38,7 +38,6 @@ input{
 }
 #banner{
 
-	@include margin-trailer;
 	@include padding-leader(0.5);
 	padding-left: 1em;
 	padding-right: 1em;
@@ -55,24 +54,32 @@ input{
 		}
 	}
 
-	& #login-box{
+	& #login-cont{
 		@include float-right;
 		display: inline-block;
+		width: $rightnav-width;
+		
 		
 		& h3{
 			@include adjust-font-size-to( 16px );
-			color: $base-header-color;
+			color: $base-button-color;
 		}
 		& label, & input{
-			display: inline-block;
-			vertical-align: top;
-			
+			display: block;
+			@include margin-trailer(0.25);
 		}
 		& label{
 			margin-right: 1em;
 		}
 		& input{
-			width: 60%;
+			padding-right: 0.5em;
+			padding-left:0.5em;
+			@include adjust-font-size-to( 12px, 1.25);
+		}
+		& button{
+			@include adjust-font-size-to(12px, 1.25);
+			@include float-right;
+			margin-right: 10px;
 		}
 	}
 }
