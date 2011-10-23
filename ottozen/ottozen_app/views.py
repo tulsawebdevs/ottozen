@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.create_update import create_object
 
 from forms import LoginForm, ProfileForm
-from models import Route, UserProfile
+from models import Point, Route, RoutePoint, UserProfile
 
 def home(request):
   return render(request, 'home.html')# Create your views here.
@@ -19,10 +19,18 @@ def myroutes(request):
   except UserProfile.DoesNotExist:
     profile = UserProfile.objects.create(user=request.user)
 
-  #commutes = Commute.objects.filter(user=request.user)
+  routes = Route.objects.filter(user=request.user)
+
   profile = request.user.get_profile()
   print profile.mobile_num
-  return render(request, 'myroutes.html', {'mobile_num': profile.mobile_num})
+  
+  for route in routes:
+    print route.waypoints
+
+    for waypoint in route.waypoints.order_by('routepoint__sequence').all():
+      print waypoint
+
+  return render(request, 'myroutes.html', {'mobile_num': profile.mobile_num, 'routes': routes})
     
 def phone(request):
   return render(request, 'phone.html')
