@@ -56,6 +56,16 @@
 		<button type="submit">Add</button>
 	</form>
 
+<div>
+  hello
+  {% for route in user.routes.all %}
+    Route: {{ route }}
+    {% for point in route.waypoints.all %}
+      Point: {{ point }}
+      Point Address: {{ point.address }}
+    {% endfor %}
+  {% endfor %}
+</div>
 <div id="user_data">
 
 <h3>User Profile for {% firstof user.first_name user.username %}
