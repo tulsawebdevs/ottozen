@@ -13,7 +13,7 @@
 
 <div id="alerts">
 
-	<h3>Alerts</h3>
+	<h3>Alert Hours</h3>
 
 		<p>Alert me about issues on this route between:</p>
 		<table class="addressbox">
@@ -56,14 +56,10 @@
 		<button type="submit">Add</button>
 	</form>
 
-<div>
-  hello
-  {{route.model.name}}
-</div>
-
 <div id="user_data">
 
-<h3>My User Profile</h3>
+<h3>User Profile for {% firstof user.first_name user.username %}
+  {{route.model.name}}</h3>
    <table class="addressbox">
   <form action="/myroutes/" method="post">{% csrf_token %}
   <tr>
