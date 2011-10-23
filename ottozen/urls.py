@@ -5,6 +5,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('ottozen_app.views',
     url(r'^$', 'home', name='home'),
+    url(r'^accounts/profile/?', 'old_profile', name='old_profile'),
+    url(r'^commutes/add/?', 'old_add', name='old_add'),
     url(r'^signup/?', 'signup', name='signup'),
     url(r'^myroutes/?', 'myroutes', name='myroutes'),
     #('', include('registration.urls')),
