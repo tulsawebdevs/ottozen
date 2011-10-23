@@ -13,3 +13,4 @@ lib
 .Python
 
 ottozen.sqlite3
+ottozen/ottozen_app/static/.sass-cache/*
