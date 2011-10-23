@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Here are your routes!</h1>
+
+<div id="user_data">
+  <label>Username:</label> {{ user.username }} <br />
+  <label>Email:</label> {{ user.email }} <br />
+  <br />
+  <table class="addressbox">
+  <form action="/accounts/profile/" method="post">{% csrf_token %}
+  <tr>
+  <td><label>Address:</label></td>
+  <td> {{ form.home_address }} </td>
+  </tr>
+  <tr>
+  <td><label>City:</label></td>
+  <td> {{ form.home_city }} </td>
+  </tr>
+  <tr>
+  <td><label>Mobile #:</label></td>
+  <td> {{ form.mobile_num }} </td>
+  </tr>
+</table><!--end addressbox-->
+
+  <input type="submit" value="Submit" /> <br/ >
+  </form>
+</div><!--end #user_data-->
+
+
+<h2>Commutes</h2>
+<a style="button" href="/commutes/add">Add a Commute</a><br />
+<ol>
+{% for commute in commutes %}
+
+<li><span class="time">{{commute.start_time}}</span><span class="from">From: {{commute.start_address}}</span><span class="to">To: {{commute.end_address}}</span></li>
+
+{% endfor %}
+</ol>
+
+{% endblock %}
