@@ -14,6 +14,9 @@ def signup(request):
 def myroutes(request):
   return render(request, 'myroutes.html')
 
+def phone(request):
+  return render(request, 'phone.html')
+
 def login(request):
   form = LoginForm(request.REQUEST)
   if form.is_valid():
