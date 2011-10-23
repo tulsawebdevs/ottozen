@@ -2,6 +2,7 @@ from django.shortcuts import render
 from alerts.models import Commute
 from users.forms import ProfileForm
 
+
 def profile(request):
   
   if request.method == 'POST':

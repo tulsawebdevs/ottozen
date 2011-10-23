@@ -63,7 +63,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = path('static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -117,7 +117,8 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-	"django.contrib.auth.context_processors.auth",
+    "django.contrib.auth.context_processors.auth",
+    'django.core.context_processors.static',
 )
 
 INSTALLED_APPS = (
@@ -140,8 +141,15 @@ AUTH_PROFILE_MODULE = 'users.UserProfile'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = '/tmp/app-messages' # change this to a proper location
+## EMAIL SETTINGS
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'admin@ottozen.com'
+EMAIL_HOST_PASSWORD = 'fablab2011'
+EMAIL_USE_TLS = True
+
+#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#EMAIL_FILE_PATH = '/tmp/app-messages' # change this to a proper location
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
