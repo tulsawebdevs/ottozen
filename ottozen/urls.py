@@ -9,6 +9,7 @@ urlpatterns = patterns('ottozen_app.views',
     url(r'^commutes/add/?', 'old_add', name='old_add'),
     url(r'^signup/?', 'signup', name='signup'),
     url(r'^myroutes/?', 'myroutes', name='myroutes'),
+    url(r'^login/?', 'login', name='login'),
     #('', include('registration.urls')),
 
     #('', include('registration.urls')),

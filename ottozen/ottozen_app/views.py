@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.create_update import create_object
 
@@ -12,6 +13,13 @@ def signup(request):
   
 def myroutes(request):
   return render(request, 'myroutes.html')
+
+def login(request):
+  success = True
+  if success:
+    return HttpResponse('OK', status=200)
+  else:
+    return HttpResponse('Failed', status=401)
 
 def old_add(request):
     return create_object(request, model=Route, login_required=True,
