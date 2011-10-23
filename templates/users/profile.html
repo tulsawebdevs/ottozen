@@ -5,7 +5,17 @@ Test Profile
 
 
 <div id="user_data">
-  <span id="label">Username: </span> {{ user.username }}
+  <label>Username:</label> {{ user.username }} <br />
+  <label>Email:</label> {{ user.email }} <br />
+  <br />
+  <form action="/accounts/profile/" method="post">{% csrf_token %}
+  <label>Address:</label> {{ form.home_address }} <br />
+  <label>City:</label> {{ form.home_city }} <br />
+  <label>Mobile #:</label> {{ form.mobile_num }} <br />
+  
+  <input type="submit" value="Submit" /> <br/ >
+  </form>
+  
 </div>
 
 
