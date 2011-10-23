@@ -8,7 +8,7 @@ from django.conf import settings
 import requests
 from twilio.rest import TwilioRestClient
 
-from alerts.models import Commute, Alert
+from models import Route, Alert
 
 
 now = datetime.now()
@@ -35,9 +35,9 @@ def store_alerts():
     incidents_response = requests.get(trif_url)
     incidents = json.loads(incidents_response.content)
 
-    commutes = Commute.objects.get_timely_commutes()
-    for commute in commutes:
-        directions_url = 'http://maps.googleapis.com/maps/api/directions/json?origin=%s&destination=%s&sensor=false' % (quote(commute.start_address), quote(commute.end_address))
+    routes = Route.objects.get_timely_routes()
+    for route in routes:
+        directions_url = 'http://maps.googleapis.com/maps/api/directions/json?origin=%s&destination=%s&sensor=false' % (quote(route.start_address), quote(route.end_address))
         directions_response = requests.get(directions_url)
         directions = json.loads(directions_response.content)
         route = directions['routes'][0]
@@ -51,10 +51,10 @@ def store_alerts():
                     distance_from_end = haversine(alert['geo']['longitude'], alert['geo']['latitude'], end_location['lng'], end_location['lat'])
                     if distance_from_start < 2 or distance_from_end < 2:
                         # distance_from_prev_end_to_current_start = haversine(prev_end_location['lng'], prev_end_location['lat'], start_location['lng'], start_location['lat'])
-                        existing_alert = Alert.objects.filter(commute=commute, user=commute.user, created__year=now.year, created__month=now.month, created__day=now.day)
+                        existing_alert = Alert.objects.filter(route=route, user=route.user, created__year=now.year, created__month=now.month, created__day=now.day)
                         if not existing_alert:
                             text = 'Oh noes! %s %s' % (alert['description'], alert['title'])
-                            alert = Alert.objects.create(commute=commute, user=commute.user,
+                            alert = Alert.objects.create(route=route, user=route.user,
                                                          sent=False, text=text)
                             alert.save()
                 prev_end_location = end_location
