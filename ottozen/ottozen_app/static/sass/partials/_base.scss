@@ -141,29 +141,6 @@ $pie-base-class: pie;
 	}
 }
 
-@mixin red-button{
-	font-family: sans-serif;
-	padding: 0 1em;
-	color:#fff;
-	border:1px solid $base-color;
-	@include pie;
-	@include border-radius( 2px );
-	background: lighten( $base-color, 30% );
-	@include background-image( linear-gradient(bottom, lighten($base-color, 20%) 0%, lighten($base-color, 5%) 4%, lighten($base-color, 20%) 100% ) );
-	-pie-background: linear-gradient(bottom, lighten($base-color, 20%) 0%, lighten($base-color, 5%) 4%, lighten($base-color, 20%) 100% );
-	
-	&:hover{
-		background:lighten($base-color, 10%);
-	}
-	&:active{
-		@include background-image( linear-gradient(top, lighten($base-color, 20%) 0%, lighten($base-color, 10%) 4%, lighten($base-color, 20%) 100% ) );
-		-pie-background: linear-gradient(top, lighten($base-color, 20%) 0%, lighten($base-color, 10%) 4%, lighten($base-color, 20%) 100% );
-	}
-	&.loading{
-		background:lighten($base-color, 30%);
-	}
-	
-}
 
 
 
@@ -246,6 +223,23 @@ $pie-base-class: pie;
 	}
 	
 }
+
+@mixin base-button{
+	font-family: sans-serif;
+	padding: 0 1em;
+	@include border-radius( 2px );
+	@include theme-hard-grad-button;
+	
+	&:hover{
+		@include theme-hard-grad-button-hover;
+	}
+	&.loading{
+		background:lighten($base-color, 30%);
+	}
+	
+}
+
+
 
 //google font mixins
 //<link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
