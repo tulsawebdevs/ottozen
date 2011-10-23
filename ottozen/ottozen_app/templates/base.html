@@ -4,6 +4,14 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>{% block title %}TITLE NOT SET{% endblock %}</title>
 <link rel='stylesheet' href='{{ STATIC_URL }}css/otto.css' >
+<link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+<script type="text/javascript">
+	var Otto = {
+		Static: {{ STATIC_URL }}
+	};
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/boot.js"></script>
 {% block head %}{% endblock %}
 </head>
 <body>

@@ -1,0 +1,171 @@
+//-----------------------------------------------
+// The following scss stylesheet provides
+// default styles for the guruYouTubeVideo
+// plugin written by Benjamin Allen
+//-----------------------------------------------
+
+//number of columns
+$gv-num-columns: 3;
+$gv-base-radius: 6px;
+$gv-thumb-block-spacing: 1%;
+$gv-box-bg: #f3f3f3;
+$gv-border-color: darken( $gv-box-bg, 20% );
+$gv-transition-speed: 0.2s;
+
+.guruVideos{
+	
+	position:relative;
+	min-height: 200px;
+	display: block;
+	
+	
+	& #guruLoadingMask{}
+	
+	& .guruCont{
+		
+		
+		& .guruThumbBlock{
+			display: inline-block;
+			width: floor( (100% - $gv-thumb-block-spacing * 2 * $gv-num-columns) / $gv-num-columns);
+			vertical-align:top;
+			margin-left: $gv-thumb-block-spacing;
+			margin-right: $gv-thumb-block-spacing;
+			@include margin-trailer;
+			@include padding-leader;
+			@include padding-trailer;
+			
+			@include pie;
+			@include border-radius( $gv-base-radius );
+			
+			background: $gv-box-bg;
+			border: 1px solid $gv-border-color;
+			
+			@include single-transition( background, $gv-transition-speed, ease-in );
+			
+			&:hover{
+				background: darken( $gv-box-bg, 10% );
+			}
+			
+			& .guruImgLink{
+				display:block;
+			}
+			& .guruVideoThumb{
+				margin: 0 auto;
+				display:block;
+				@include pie;
+				@include border-radius( 2px );
+			}
+			
+			& .guruThumbTitle{
+				text-align:center;
+				@include adjust-font-size-to( 14px );
+				@include margin-leader;
+				padding-left:1em;
+				padding-right:1em;
+				cursor:pointer;
+				cursor:hand;
+				font-family: courier, monospace, sans-serif;
+			}
+		}	
+	}
+	
+}
+
+#guruLoadingMask{
+	@include pie;
+	position:absolute;
+	display:block;
+	top:0;
+	left:0;
+	width:100%;
+	z-index:10000;
+	
+	@include border-radius( $gv-base-radius );
+			
+	background-image: url('../images/loading.gif');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: rgba(255,255,255,0.5);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7FFFFFFF,endColorstr=#7FFFFFFF)"; /* IE8 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7FFFFFFF,endColorstr=#7FFFFFFF);   /* IE6 & 7 */
+    zoom: 1;
+}
+
+
+img.guruVideoThumb {
+}
+
+.guruDesc{
+	margin: 10px 0;
+	font-size: 0.9em;
+	line-height: 1.5em;
+}
+#guruPagin{
+	display: block;
+	width:100%;
+	text-align:center;
+	//line-height:2em;
+	@include adjust-font-size-to( 14px );
+	
+	@include padding-leader(1);
+	@include padding-trailer(1);
+	//padding: 1em 0;
+		
+	min-height: 50px;
+}
+#guruPagin .next, #guruPagin .prev{
+	display: inline-block;
+	vertical-align: text-top;
+	cursor:pointer;
+	cursor:hand;
+	line-height:2em;
+}
+#guruPagin .next{
+	@include float-right;
+}
+#guruPagin .prev{
+	@include float-left;
+}
+#guruPagin span{
+	display:inline-block;
+	vertical-align: text-top;
+}
+
+
+#guruYtPlayer, #guruClose{
+	position: absolute !important;
+	left: -10000px;
+}
+#guruYtPlayer{
+	z-index:1000;
+}
+#guruClose{
+	@include pie;
+	z-index:1001;
+	cursor:pointer;
+	color: #fefefe;
+	font-size:1.5em;
+	line-height:1.8em;
+	padding:0.4em 1em;
+	
+	@include background( rgba(0,0,0,0.5) );
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000,endColorstr=#7F000000)"; /* IE8 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000,endColorstr=#7F000000);   /* IE6 & 7 */	
+    zoom: 1;
+
+	&:hover{
+	    text-decoration: underline;	
+		@include background( rgba(0,0,0,0.7) );
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000)"; /* IE8 */
+	    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000);   /* IE6 & 7 */
+	}
+	&:active{
+	@include background( rgba(0,0,0,0.6) );
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000)"; /* IE8 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);   /* IE6 & 7 */
+	}
+}
+
+.guruPlay{
+	display:none;
+}

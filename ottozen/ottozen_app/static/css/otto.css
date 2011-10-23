@@ -1,80 +1,487 @@
-html, body{
-	height: 100%;
-	margin:0;
-	padding:0;
-	font-family:calibri;
-	font-size:14px;
-	line-height:20px;
-}
-#container{
-margin-left: auto;
-margin-right: auto;
-width: 800px;
-}
-#banner{
-
-}
-#banner img{
-display:block;
-float:left;
-margin: 0.5em 1em;
-}
-#maincontent{
-background-image:url(/static/img/lightbluegradient.jpg);
-background-repeat:repeat-x;
-border:1px solid #ccc;
-padding:1em;
-
-}
-#gmapCont{
-	display:block;
-	height:400px;
-	width: 600px;
-	margin-left:auto;
-	margin-right:auto;
+/* line 14, ../sass/html5-boilerplate/_reset.scss */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 
-#add_commute_confirm{
-
-	margin: 12px auto;
-	display: block;
-	font-size: 16px;
-	color: #666;
-	line-height: 24px;
-	background: rgba( 100,255,100,0.3 );
-	border: 1px solid rgb( 100, 255, 100 );
-}
-#add_commute_confirm:hover{
-	background: rgba( 100,255,100,0.5 ) ;
-}
-#add_commute_confirm:active{
-	background: rgba( 100,255,100,0.7 ) ;
-}
-#add_commute_form{
-margin:0.5em 1em;
-}
-a, h1,h2,h3,h4,H1,H2,H3,H4{
-color:#8695A8;
-}
-.clear{
-clear:both;
-display:block;
-width:100%;
-height:0px;
-}
-.right{
-float:right;
-}
-.addressbox{
-    background: none repeat scroll 0 0 #EEEEEE;
-    display: block;
-    height: 123px;
-    line-height: 30px;
-    margin: 1em;
-    padding: 10px;
-    width: 300px;
-}
-.addressbox label{
-margin:1em;
+/* line 23, ../sass/html5-boilerplate/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
 }
 
+/* line 27, ../sass/html5-boilerplate/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 30, ../sass/html5-boilerplate/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../sass/html5-boilerplate/_reset.scss */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 34, ../sass/html5-boilerplate/_reset.scss */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* line 36, ../sass/html5-boilerplate/_reset.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* line 38, ../sass/html5-boilerplate/_reset.scss */
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+/* line 40, ../sass/html5-boilerplate/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 42, ../sass/html5-boilerplate/_reset.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 11, ../sass/html5-boilerplate/_fonts.scss */
+body {
+  font-size: 13px;
+  font-family: sans-serif;
+  line-height: 1.231;
+  *font-size: small;
+}
+
+/* line 20, ../sass/html5-boilerplate/_fonts.scss */
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif;
+}
+
+/* line 15, ../sass/html5-boilerplate/_styles.scss */
+html {
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* line 17, ../sass/html5-boilerplate/_styles.scss */
+ul, ol {
+  margin-left: 2em;
+}
+
+/* line 18, ../sass/html5-boilerplate/_styles.scss */
+ol {
+  list-style-type: decimal;
+}
+
+/* line 20, ../sass/html5-boilerplate/_styles.scss */
+td {
+  vertical-align: top;
+}
+
+/* line 22, ../sass/html5-boilerplate/_styles.scss */
+sub {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  bottom: -0.25em;
+}
+
+/* line 24, ../sass/html5-boilerplate/_styles.scss */
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  top: -0.5em;
+}
+
+/* line 53, ../sass/html5-boilerplate/_styles.scss */
+a:hover, a:active {
+  outline: none;
+}
+
+/* line 58, ../sass/html5-boilerplate/_styles.scss */
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 15px;
+}
+
+/* line 71, ../sass/html5-boilerplate/_styles.scss */
+label, input[type="button"], input[type="submit"], input[type="image"], button {
+  cursor: pointer;
+}
+
+/* line 80, ../sass/html5-boilerplate/_styles.scss */
+button, input, select, textarea {
+  width: auto;
+  overflow: visible;
+  margin: 0;
+  font-size: 100%;
+  font-family: sans-serif;
+  vertical-align: baseline;
+}
+
+/* line 84, ../sass/html5-boilerplate/_styles.scss */
+textarea {
+  overflow: auto;
+  vertical-align: text-top;
+}
+
+/* line 88, ../sass/html5-boilerplate/_styles.scss */
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* line 99, ../sass/html5-boilerplate/_styles.scss */
+::-moz-selection {
+  background: #6ca4d8;
+  color: white;
+  text-shadow: none;
+}
+
+/* line 100, ../sass/html5-boilerplate/_styles.scss */
+::selection {
+  background: #6ca4d8;
+  color: white;
+  text-shadow: none;
+}
+
+/* line 105, ../sass/html5-boilerplate/_styles.scss */
+a:link {
+  -webkit-tap-highlight-color: #6ca4d8;
+}
+
+/* line 118, ../sass/html5-boilerplate/_styles.scss */
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* line 120, ../sass/html5-boilerplate/_styles.scss */
+.ie6 legend, .ie7 legend {
+  margin-left: -7px;
+}
+
+/* line 125, ../sass/html5-boilerplate/_styles.scss */
+nav ul, nav li {
+  margin: 0;
+  list-style: none;
+  list-style-image: none;
+}
+
+/* line 10, ../sass/html5-boilerplate/_helpers.scss */
+.ir {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  direction: ltr;
+  background-repeat: no-repeat;
+}
+
+/* line 12, ../sass/html5-boilerplate/_helpers.scss */
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+/* line 14, ../sass/html5-boilerplate/_helpers.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/* line 50, ../sass/html5-boilerplate/_helpers.scss */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* line 16, ../sass/html5-boilerplate/_helpers.scss */
+.clearfix {
+  zoom: 1;
+}
+/* line 61, ../sass/html5-boilerplate/_helpers.scss */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+/* line 62, ../sass/html5-boilerplate/_helpers.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/* line 8, ../sass/partials/_page.scss */
+body, select, input, textarea {
+  color: #444444;
+}
+
+/* line 15, ../sass/partials/_page.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+/* line 21, ../sass/partials/_page.scss */
+a, a:active, a:visited {
+  color: #607890;
+}
+
+/* line 22, ../sass/partials/_page.scss */
+a:hover {
+  color: #003366;
+}
+
+/* line 24, ../sass/partials/_page.scss */
+strong, th {
+  font-weight: bold;
+}
+
+/* line 28, ../sass/partials/_page.scss */
+small {
+  font-size: 85%;
+}
+
+/* line 37, ../sass/partials/_page.scss */
+input:invalid, textarea:invalid {
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -o-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -khtml-border-radius: 1px;
+  border-radius: 1px;
+  -moz-box-shadow: 0 0 5px 0 red;
+  -webkit-box-shadow: 0 0 5px 0 red;
+  -o-box-shadow: 0 0 5px 0 red;
+  box-shadow: 0 0 5px 0 red;
+}
+
+/* line 42, ../sass/partials/_page.scss */
+.no-boxshadow input:invalid,
+.no-boxshadow textarea:invalid {
+  background-color: #f0dddd;
+}
+
+/*/mediaquery*/
+/*/mediaquery*/
+@media print {
+  /* line 10, ../sass/html5-boilerplate/_media.scss */
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  /* line 12, ../sass/html5-boilerplate/_media.scss */
+  a, a:visited {
+    color: #444 !important;
+    text-decoration: underline;
+  }
+
+  /* line 13, ../sass/html5-boilerplate/_media.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 14, ../sass/html5-boilerplate/_media.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* line 15, ../sass/html5-boilerplate/_media.scss */
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  /* line 16, ../sass/html5-boilerplate/_media.scss */
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 17, ../sass/html5-boilerplate/_media.scss */
+  thead {
+    display: table-header-group;
+  }
+
+  /* line 18, ../sass/html5-boilerplate/_media.scss */
+  tr, img {
+    page-break-inside: avoid;
+  }
+
+  /* line 19, ../sass/html5-boilerplate/_media.scss */
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 21, ../sass/html5-boilerplate/_media.scss */
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 22, ../sass/html5-boilerplate/_media.scss */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
+/* line 51, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+body {
+  font-size: 75%;
+  line-height: 1.5em;
+}
+
+/* line 55, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+html > body {
+  font-size: 12px;
+}
+
+/* line 114, ../sass/partials/_base.scss */
+.pie {
+  behavior: url("/PIE.php");
+  position: relative;
+}
+
+/* line 8, ../sass/otto.scss */
+body {
+  font-family: 'Cuprum', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+/* line 11, ../sass/otto.scss */
+#container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+
+/* line 19, ../sass/otto.scss */
+#banner img {
+  display: block;
+  float: left;
+  margin: 0.5em 1em;
+}
+
+/* line 24, ../sass/otto.scss */
+#maincontent {
+  background-image: url(/static/img/lightbluegradient.jpg);
+  background-repeat: repeat-x;
+  border: 1px solid #ccc;
+  padding: 1em;
+}
+
+/* line 31, ../sass/otto.scss */
+#gmapCont {
+  display: block;
+  height: 400px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 39, ../sass/otto.scss */
+#add_commute_confirm {
+  margin: 12px auto;
+  display: block;
+  font-size: 16px;
+  color: #666;
+  line-height: 24px;
+  background: rgba(100, 255, 100, 0.3);
+  border: 1px solid #64ff64;
+}
+
+/* line 49, ../sass/otto.scss */
+#add_commute_confirm:hover {
+  background: rgba(100, 255, 100, 0.5);
+}
+
+/* line 52, ../sass/otto.scss */
+#add_commute_confirm:active {
+  background: rgba(100, 255, 100, 0.7);
+}
+
+/* line 55, ../sass/otto.scss */
+#add_commute_form {
+  margin: 0.5em 1em;
+}
+
+/* line 58, ../sass/otto.scss */
+a, h1, h2, h3, h4, H1, H2, H3, H4 {
+  color: #8695A8;
+}
+
+/* line 61, ../sass/otto.scss */
+.clear {
+  clear: both;
+  display: block;
+  width: 100%;
+  height: 0px;
+}
+
+/* line 67, ../sass/otto.scss */
+.right {
+  display: inline;
+  float: right;
+}
+
+/* line 70, ../sass/otto.scss */
+.addressbox {
+  background: none repeat scroll 0 0 #EEEEEE;
+  display: block;
+  height: 123px;
+  line-height: 30px;
+  margin: 1em;
+  padding: 10px;
+  width: 300px;
+}
+
+/* line 79, ../sass/otto.scss */
+.addressbox label {
+  margin: 1em;
+}

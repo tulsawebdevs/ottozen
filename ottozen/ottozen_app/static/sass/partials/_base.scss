@@ -1,0 +1,256 @@
+// This file must be imported before loading html5-boilerplate
+
+$base-font-family: unquote('sans-serif');  // default font-family
+
+$base-font-size: 13px;  // default font-size for YUI fonts
+
+$base-line-height: 1.231;  // default line-height for YUI fonts
+
+$font-color: #444;
+
+$link-color: #607890;
+
+$link-hover-color: #036;
+
+$link-active-color: #607890;
+
+$link-visited-color: #607890;
+
+$selected-font-color: #fff;  // color for selected text
+
+$selected-background-color: lighten( #2E71B0, 20% );;  // bg-color for selected text
+
+$list-left-margin: 2em;  // left margin for ul an ol
+
+
+// Then we'll import the compass extension
+@import "html5-boilerplate";
+
+// Now, you can simply include everything
+// (except media) by uncommeting this line
+@include html5-boilerplate;
+
+// Or, you can pick and choose only the sections
+// you want by using the these includes
+//@include html5-boilerplate-reset;
+//@include html5-boilerplate-fonts;
+//@include html5-boilerplate-styles;
+//@include html5-boilerplate-helpers;
+
+// Or, you can import the "overrides" partial if
+// you want more control over individual mixins
+//@import "partials/overrides";
+
+// Finally, put your own styles in these partials
+// and add more as needed (i.e. forms, tables, nav)
+@import "partials/fonts";
+@import "partials/page";
+
+// Media should come last
+@import "partials/media";
+
+//typography
+@import "compass/typography";
+
+
+
+//utilities
+@import "compass/utilities";
+
+//and css3
+@import "compass/css3/pie";
+@import "compass/css3";
+
+
+
+//and guru plugins styles
+
+//$base-color: #bad;
+$base-color: #666;
+$base-header-color: #FF771D;
+//$base-header-color: #bad;
+$base-button-color: #2D72B1;
+//$base-button-color: #bada55;
+
+$base-grey: #999;
+
+$base-bg: #e6e6e6;
+
+$base-hover-opacity: 0.7;
+
+$base-width: 1000px;
+
+$base-transition-time: 0.1s;
+
+$box-bg: lighten($base-bg, 100%);
+
+$guru-color: #0761E2;
+
+//$contain-padding: 10px;
+
+//$bar-size: 14px;
+
+//$top-bar-color: lighten( $base-bg, 10% );
+//$left-bar-color: darken( $base-bg, 10% );
+
+
+
+$base-font-size: 12px;
+$base-line-height: 18px;
+
+
+//radial gradients in ie9 & opera
+$experimental-support-for-svg: true;
+
+
+@include establish-baseline(12px);
+
+
+
+//$pie-behavior: url("/PIE.htc");
+$pie-behavior: url("/PIE.php");
+//$pie-behavior: url("/~ben/owasso/PIE.php"); //CHANGE THIS ON LAUNCH!!!
+$pie-base-class: pie;
+.pie{
+	@include pie-element(relative);
+}
+
+@mixin pie-png-fix{
+	-pie-png-fix: true;	
+}
+
+//to use:
+//#someEl{
+//	@include pie;
+//	@include background-image(linear-gradient(top center, white, $base-color));
+//	-pie-background: linear-gradient(top center, white, $base-color); //cause background images require that key in pie.
+//}
+
+@mixin main-sprite{
+	background-image:url("../images/main-sprite-32.png");
+	//background-image:url("../images/main-sprite-8.png");
+	background-repeat: no-repeat;
+}
+
+@mixin hover-opacity{
+	&:hover{
+		@include opacity(0.7);
+	}
+	&:active{
+		@include opacity(0.85);
+	}
+}
+
+@mixin red-button{
+	font-family: sans-serif;
+	padding: 0 1em;
+	color:#fff;
+	border:1px solid $base-color;
+	@include pie;
+	@include border-radius( 2px );
+	background: lighten( $base-color, 30% );
+	@include background-image( linear-gradient(bottom, lighten($base-color, 20%) 0%, lighten($base-color, 5%) 4%, lighten($base-color, 20%) 100% ) );
+	-pie-background: linear-gradient(bottom, lighten($base-color, 20%) 0%, lighten($base-color, 5%) 4%, lighten($base-color, 20%) 100% );
+	
+	&:hover{
+		background:lighten($base-color, 10%);
+	}
+	&:active{
+		@include background-image( linear-gradient(top, lighten($base-color, 20%) 0%, lighten($base-color, 10%) 4%, lighten($base-color, 20%) 100% ) );
+		-pie-background: linear-gradient(top, lighten($base-color, 20%) 0%, lighten($base-color, 10%) 4%, lighten($base-color, 20%) 100% );
+	}
+	&.loading{
+		background:lighten($base-color, 30%);
+	}
+	
+}
+
+
+
+@mixin theme-button-gradient{
+	@include pie;
+	@include background-image(
+				linear-gradient(
+					top,
+					$base-button-color 0%,
+					darken( $base-button-color, 8% ) 100%
+				)
+	);
+	-pie-background: linear-gradient(
+					top,
+					$base-button-color 0%,
+					darken( $base-button-color, 8% ) 100%
+	);
+	@include single-box-shadow(
+				lighten( $base-button-color, 5% ), //$color,
+				0, //$hoff,
+				0, //$voff,
+				6px, //$blur,
+				4px, //$spread,
+				true //$inset
+	);
+}
+
+//come back
+@mixin theme-hard-grad-button{
+	@include pie;
+
+	background: $base-button-color;
+	
+	border: 1px solid transparent;
+	color: #fff;
+	
+	@include background-image(
+				linear-gradient(
+					top,
+					lighten($base-button-color, 10%) 50%,
+					$base-button-color 51%
+				)
+	);
+	-pie-background: linear-gradient(
+					top,
+					lighten($base-button-color, 10%) 50%,
+					$base-button-color 51%
+	);
+	
+}
+
+@mixin theme-hard-grad-button-hover{
+	&:hover{
+		@include background-image(
+					linear-gradient(
+						top,
+						lighten($base-button-color, 10%),
+						$base-button-color
+					)
+		);
+		-pie-background: linear-gradient(
+						top,
+						lighten($base-button-color, 10%),
+						$base-button-color
+		);
+	}
+	&:active{
+		@include background-image(
+					linear-gradient(
+						bottom,
+						lighten($base-button-color, 10%),
+						$base-button-color
+					)
+		);
+		-pie-background: linear-gradient(
+						bottom,
+						lighten($base-button-color, 10%),
+						$base-button-color
+		);
+	}
+	
+}
+
+//google font mixins
+//<link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
+
+@mixin cuprum{
+	font-family: 'Cuprum', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
