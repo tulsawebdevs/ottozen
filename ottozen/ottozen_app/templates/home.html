@@ -44,38 +44,32 @@
 		<input type="text" name="start_address" placeholder="Ex: 123 Main Street" />
 		<label>End Address:</label>
 		<input type="text" name="end_address" placeholder="Ex: 987 West Nowhere Avenue" />
-		<button class="base bttn" type="submit">Check Route</button>
+		<button class="base bttn" value="checkroute" type="submit">Check Route</button>
+		<button class="base bttn" value="signup" type="submit" href="/signup">Sign Up!</button>
 		{% csrf_token %}
 	</form>
 
 		<div id="gmapCont"></div>
-
-
-	<div class="signup">
-	  <a href="/signup">Click here to signup!</a>
-	</div>
-
-	<br />
-
+<br/>
 	<div class="login">
 	  <a href="/myroutes">Already have an account? Login!</a>
 	</div>
 
-</div>
+</div><!--end #maincont-->
 
 <div id="leftnav">
 
 	<div id="ottoblurb">
 		<header>About Otto</header>
 		<section>
-			<p>Otto helps you deal with the unexpected when stuff happens on the road</p>
+			<p>Otto helps you deal with the unexpected when stuff happens on the road.</p>
 		</section>
 	</div><!--end ottoblurb-->
 
 	<div id="vid">
 		<header>How Otto Works</header>
 		<section>
-			<p>Movie goes here!</p>
+			<p><img src="bigvidthumb"></p>
 		</section>
 	</div><!--end vid-->
 
@@ -83,3 +77,4 @@
 
 
 {% endblock %}
+
