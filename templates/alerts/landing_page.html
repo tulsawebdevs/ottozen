@@ -1,18 +1,50 @@
 {% extends 'base.html' %}
+{% block title %}Otto Zen : What's Your Commute?{% endblock %}
+{% block body %}
+<style>
+#leftnav{
+width:200px;
+}
+#ottoblurb{
+}
+#vid{
+<img src="{{STATIC_URL}}img/bigvidthumb.png">
+}
+</style>
+<div id="leftnav">
+<div id="ottoblurb">
+</div><!--end ottoblurb-->
+<div id="vid">
+</div><!--end vid-->
+</div><!--end leftnav-->
+<h2>What's your commute?</h2>
 
-{% block title %}Otto Zen : Add a Commute{% endblock %}
-{% block head %}
-<script src="//maps.googleapis.com/maps/api/js?sensor=true" type="text/javascript"></script>
+<h3>Enter your commute below and Otto will let you know of any issues by sending you a text message.</h3>
+<a style="button" href="/commutes/add">Add a Commute</a><br />
+<ol>
+{% for commute in commutes %}
 
-<script type="text/javascript">
-/*!
-  * $script.js v1.3
-  * https://github.com/ded/script.js
-  * Copyright: @ded & @fat - Dustin Diaz, Jacob Thornton 2011
-  * Follow our software http://twitter.com/dedfat
-  * License: MIT
-  */
-!function(a,b,c){function t(a,c){var e=b.createElement("script"),f=j;e.onload=e[o]=function(){e[m]&&!/^c|loade/.test(e[m])||f||(e.onload=e[o]=null,f=1,c())},e.async=1,e.src=a,d.insertBefore(e,d.firstChild)}function q(a,b){p(a,function(a){return!b(a)})}var d=b.getElementsByTagName("head")[0],e={},f={},g={},h={},i="string",j=!1,k="push",l="DOMContentLoaded",m="readyState",n="addEventListener",o="onreadystatechange",p=function(a,b){for(var c=0,d=a.length;c<d;++c)if(!b(a[c]))return j;return 1};!b[m]&&b[n]&&(b[n](l,function r(){b.removeEventListener(l,r,j),b[m]="complete"},j),b[m]="loading");var s=function(a,b,d){function o(){if(!--m){e[l]=1,j&&j();for(var a in g)p(a.split("|"),n)&&!q(g[a],n)&&(g[a]=[])}}function n(a){return a.call?a():e[a]}a=a[k]?a:[a];var i=b&&b.call,j=i?b:d,l=i?a.join(""):b,m=a.length;c(function(){q(a,function(a){h[a]?(l&&(f[l]=1),o()):(h[a]=1,l&&(f[l]=1),t(s.path?s.path+a+".js":a,o))})},0);return s};s.get=t,s.ready=function(a,b,c){a=a[k]?a:[a];var d=[];!q(a,function(a){e[a]||d[k](a)})&&p(a,function(a){return e[a]})?b():!function(a){g[a]=g[a]||[],g[a][k](b),c&&c(d)}(a.join("|"));return s};var u=a.$script;s.noConflict=function(){a.$script=u;return this},typeof module!="undefined"&&module.exports?module.exports=s:a.$script=s}(this,document,setTimeout)
+<li><span class="from">Starting Address: {{commute.start_address}}</span><span class="to">Ending Address: {{commute.end_address}}</span></li>
+
+{% endfor %}
+</ol>
+	<form id="add_commute_form" action="/commutes/add" method="post">
+        {% csrf_token %}
+		<input type="hidden" name="user" value="{{user.id}}" />
+		<input type="hidden" name="waypoints" value="" />
+		<label>Start Time:</label>
+		<input type="text" name="start_time" placeholder="Start Time" />
+		<label>Start Address:</label>
+		<input type="text" name="start_address" placeholder="Ex: 123 Main Street" />
+		<label>End Address:</label>
+		<input type="text" name="end_address" placeholder="Ex: 987 West Nowhere Avenue" />
+		<button type="submit">Add</button>
+	</form>
+
+	<div id="gmapCont"></div>
+
+{% endblock %}
+t,s.ready=function(a,b,c){a=a[k]?a:[a];var d=[];!q(a,function(a){e[a]||d[k](a)})&&p(a,function(a){return e[a]})?b():!function(a){g[a]=g[a]||[],g[a][k](b),c&&c(d)}(a.join("|"));return s};var u=a.$script;s.noConflict=function(){a.$script=u;return this},typeof module!="undefined"&&module.exports?module.exports=s:a.$script=s}(this,document,setTimeout)
 
 //async dependency loading
 $script('//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', 'jquery');
