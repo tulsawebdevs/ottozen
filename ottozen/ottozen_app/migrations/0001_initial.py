@@ -27,14 +27,14 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('ottozen_app', ['Route'])
 
-        # Adding model 'RoutePoints'
-        db.create_table('ottozen_app_routepoints', (
+        # Adding model 'RoutePoint'
+        db.create_table('ottozen_app_routepoint', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('route', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['ottozen_app.Route'])),
             ('point', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['ottozen_app.Point'])),
             ('sequence', self.gf('django.db.models.fields.IntegerField')()),
         ))
-        db.send_create_signal('ottozen_app', ['RoutePoints'])
+        db.send_create_signal('ottozen_app', ['RoutePoint'])
 
         # Adding model 'Alert'
         db.create_table('ottozen_app_alert', (
@@ -67,8 +67,8 @@ class Migration(SchemaMigration):
         # Deleting model 'Route'
         db.delete_table('ottozen_app_route')
 
-        # Deleting model 'RoutePoints'
-        db.delete_table('ottozen_app_routepoints')
+        # Deleting model 'RoutePoint'
+        db.delete_table('ottozen_app_routepoint')
 
         # Deleting model 'Alert'
         db.delete_table('ottozen_app_alert')
@@ -137,10 +137,10 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'start_time': ('django.db.models.fields.TimeField', [], {'null': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
-            'waypoints': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['ottozen_app.Point']", 'through': "orm['ottozen_app.RoutePoints']", 'symmetrical': 'False'})
+            'waypoints': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['ottozen_app.Point']", 'through': "orm['ottozen_app.RoutePoint']", 'symmetrical': 'False'})
         },
-        'ottozen_app.routepoints': {
-            'Meta': {'object_name': 'RoutePoints'},
+        'ottozen_app.routepoint': {
+            'Meta': {'object_name': 'RoutePoint'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'point': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['ottozen_app.Point']"}),
             'route': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['ottozen_app.Route']"}),

@@ -27,7 +27,7 @@ class Point(models.Model):
 class Route(models.Model):
     user = models.ForeignKey(User)
     start_time = models.TimeField(null=True)
-    waypoints = models.ManyToManyField(Point, through='RoutePoints')
+    waypoints = models.ManyToManyField(Point, through='RoutePoint')
 
     objects = RouteManager()
 
@@ -35,7 +35,7 @@ class Route(models.Model):
         return self.user.username + ' from ' + self.start_address + ' to ' + self.end_address
 
 
-class RoutePoints(models.Model):
+class RoutePoint(models.Model):
     route = models.ForeignKey(Route)
     point = models.ForeignKey(Point)
     sequence = models.IntegerField()
