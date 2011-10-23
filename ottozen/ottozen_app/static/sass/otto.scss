@@ -20,7 +20,7 @@ a, h1,h2,h3,h4,H1,H2,H3,H4{
 	@include margin-trailer;
 	margin-left: auto;
 	margin-right: auto;
-	width: 800px;
+	width: $base-width;
 	background: $box-bg;
 }
 #banner{
@@ -69,7 +69,7 @@ a, h1,h2,h3,h4,H1,H2,H3,H4{
 }
 
 #maincontent{
-
+	display:block;
 	@include padding-leader;
 	@include padding-trailer;
 	padding-left: 1em;
@@ -80,6 +80,8 @@ a, h1,h2,h3,h4,H1,H2,H3,H4{
 	-pie-background: linear-gradient( top, $base-header-color 0%, lighten( $base-header-color, 30% ) 1%, lighten( $base-header-color, 100% ) 100% );
 	@include background( linear-gradient( top, $base-header-color 0%, lighten( $base-header-color, 30% ) 1%, lighten( $base-header-color, 100% ) 8% ) );
 }
+
+
 #gmapCont{
 	display:block;
 	height:400px;
@@ -127,10 +129,44 @@ margin:0.5em 1em;
 }
 
 
+$leftnav-width: floor( $base-width * 0.15 );
+$rightnav-width: 200px;
+
+#leftnav, #rightnav{
+
+	background: #bad;
+
+
+	& > div{
+		& header{
+			background: $base-bg;
+		}
+		& section{
+			
+			& img, & iframe{
+				display:block;
+				@include margin-trailer(0.5);
+			}
+		}
+	}
+	
+}
+
 #leftnav{
-	width:200px;
+	@include float-left;
+	width: $leftnav-width;
+
 }
-#ottoblurb{
+
+#rightnav{
+	@include float-right;
+	width: $rightnav-width;
+	
 }
-#vid{
+
+#maincont{
+	width: $base-width - $leftnav-width - $rightnav-width - 20;
 }
+
+
+
