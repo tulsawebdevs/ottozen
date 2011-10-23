@@ -228,7 +228,8 @@ $script.ready(['jquery'], function(){
 <div id="mapwrap">
 	<div id="gmapCont"></div>
 </div><!--end #mapwrap-->
-<div id="rightnav">
+
+<div id="alerts">
 
 	<h3>Alerts</h3>
 
@@ -239,7 +240,21 @@ $script.ready(['jquery'], function(){
 		<tr><td><label>end time:</label><input type="text" value="7:00 am"></input></td></tr>
 		</table>
 
+</div><!--end #alerts-->
+
+<div id="waypoints">
+
+	<h3>Waypoints</h3>
+
+		<p>Add a waypoint by clicking your route on the map and dragging the line to your stop-off locations (ie: kid's school, drycleaners). Or, enter waypoint addresses below:</p>
+		<table class="addressbox">
+		<tr><td><label>waypoint location:</label><input type="text" value="123 main street"></input></td></tr>
+		<tr><td><input class="base bttn right" type="button" value="save waypoint"></input></td></tr>
+		</table>
+
+
 </div><!--end #rightnav-->
+
 <a style="button" href="/commutes/add">Add a Commute</a><br />
 <ol>
 {% for commute in commutes %}
