@@ -1,3 +1,5 @@
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.create_update import create_object
@@ -12,15 +14,62 @@ def signup(request):
   return render(request, 'signup.html')
   
 def myroutes(request):
-  return render(request, 'myroutes.html')
+  try:
+    profile = request.user.get_profile()
+  except UserProfile.DoesNotExist:
+    profile = UserProfile.objects.create(user=request.user)
 
-def login(request):
+  #commutes = Commute.objects.filter(user=request.user)
+  profile = request.user.get_profile()
+  print profile.mobile_num
+  return render(request, 'myroutes.html', {'mobile_num': profile.mobile_num})
+    
+def phone(request):
+  return render(request, 'phone.html')
+
+def do_login(request):
   form = LoginForm(request.REQUEST)
   if form.is_valid():
-    message = 'OK'
-    status = 200
+    user = None
+    ident = form.cleaned_data['dummy_name']
+    password = form.cleaned_data['password']
+    
+    if not user:
+      try:
+        user = User.objects.get(email=ident)
+      except User.DoesNotExist:
+        pass
+    
+    if not user:
+      try:
+        user = UserProfile.objects.get(mobile_num=ident).user
+      except UserProfile.DoesNotExist:
+        pass
+    
+    if not user:
+      try:
+        user = User.objects.get(username=ident)
+      except User.DoesNotExist:
+        pass
+    
+    if not user:
+      message = "We couldn't find a matching mobile number or email"
+      status = 401
+    else:
+      a_user = authenticate(username=user.username, password=password)
+      if a_user is not None:
+        if a_user.is_active:
+          login(request, a_user)
+          message = "OK"
+          status = 200
+        else:
+          message = "Your account is disabled"
+          status = 401
+      else:
+        message = "Wrong password for %s" % ident
+        status = 401
   else:
-    message = 'Bad Form'
+    message = 'Please enter all fields'
     status = 401
     
   return HttpResponse(message, status=status)
