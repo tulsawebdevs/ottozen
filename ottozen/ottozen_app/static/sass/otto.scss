@@ -3,6 +3,12 @@
 
 //look in base for other variables
 
+$leftnav-width: floor( $base-width * 0.15 );
+$rightnav-width: 200px;
+$container-margin: 20px;
+$maincont-width: $base-width - $rightnav-width - $container-margin * 2;
+$add-form-width: 200px;
+$map-width: $maincont-width - $add-form-width - $container-margin *2;
 
 
 body{
@@ -14,6 +20,13 @@ a, h1,h2,h3,h4,H1,H2,H3,H4{
 	color:$base-button-color;
 }
 
+
+input{
+
+	&:focus{
+		background: lighten( $base-button-color, 50% );
+	}
+}
 
 #container{
 	@include margin-leader;
@@ -88,17 +101,62 @@ a.base.bttn{
 	& h1{
 		@include adjust-font-size-to( 28px );
 		@include single-text-shadow( $base-color, -1px, 1px, 2px );
+		@include margin-trailer(0.25);
 	}
+
+	& #add_commute_form{
+		@include float-right;
+		display:block;
+		width: $add-form-width;
+		
+		@include margin-leader;
+		@include margin-trailer;
+		margin-right: 1em;
+
+		& *{
+			//margin-left: 0.5em;
+			//margin-right: 0.5em;
+		}
+		
+		& label{
+			color: darken( $base-button-color, 1% );
+			@include adjust-font-size-to( 14px );
+			font-weight: bold;
+			@include margin-trailer(0.25);
+			display:block;
+			
+			//@include single-text-shadow( lighten($base-color, 20%), -1px, 1px, 0px );
+		}
+		
+		& input{
+			@include margin-trailer;
+			width: $add-form-width - $container-margin * 2;
+			@include adjust-font-size-to(14px, 1.5);
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+		
+		}
+	}
+	
+
+	& #gmapCont{
+		//@include float-left;
+		@include margin-leader;
+		@include margin-trailer;
+		display:block;
+		height:320px;
+		width: $map-width;
+		//margin-left:auto;
+		//margin-right:auto;
+	}
+	
 }
 
 
-#gmapCont{
-	display:block;
-	height:400px;
-	width: 600px;
-	margin-left:auto;
-	margin-right:auto;
+
+#add_commute_form{
 }
+
 
 #add_commute_confirm{
 
@@ -116,9 +174,9 @@ a.base.bttn{
 #add_commute_confirm:active{
 	background: rgba( 100,255,100,0.7 ) ;
 }
-#add_commute_form{
-margin:0.5em 1em;
-}
+
+
+
 .clear{
 @include pie-clearfix;
 }
@@ -139,9 +197,6 @@ margin:0.5em 1em;
 }
 
 
-$leftnav-width: floor( $base-width * 0.15 );
-$rightnav-width: 200px;
-$container-margin: 20px;
 
 #leftnav, #rightnav{
 
@@ -195,7 +250,7 @@ $container-margin: 20px;
 }
 
 #maincont{
-	width: $base-width - $rightnav-width - $container-margin * 2;
+	width: $maincont-width;
 	display: block;
 	margin-right: $container-margin;
 }
