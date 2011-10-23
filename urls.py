@@ -8,8 +8,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'commute_alert.views.home', name='home'),
     # url(r'^commute_alert/', include('commute_alert.foo.urls')),
     ('', include('registration.urls')),
-    ('', include('alerts.urls')),
     ('^accounts/profile/?', 'users.views.profile'),
+    ('^commutes/add/?', 'alerts.views.add'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
