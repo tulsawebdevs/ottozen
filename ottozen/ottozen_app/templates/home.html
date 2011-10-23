@@ -1,8 +1,50 @@
 {% extends 'base.html' %}
-
+{% block title %}Otto Zen : What's Your Commute?{% endblock %}
 {% block body %}
 
 <h1>Welcome to Otto Zen!</h1>
+
+<div id="leftnav">
+
+	<div id="ottoblurb">
+		<header>About Otto</header>
+		<section>
+			<p>Otto helps you deal with the unexpected when stuff happens on the road</p>
+		</section>
+	</div><!--end ottoblurb-->
+
+	<div id="vid">
+		<img src="{{STATIC_URL}}img/bigvidthumb.png">
+	</div><!--end vid-->
+
+</div><!--end leftnav-->
+
+<h2>What's your commute?</h2>
+
+<h3>Enter your commute below and Otto will let you know of any issues by sending you a text message.</h3>
+<a style="button" href="/commutes/add">Add a Commute</a><br />
+<ol>
+{% for commute in commutes %}
+
+<li><span class="from">Starting Address: {{commute.start_address}}</span><span class="to">Ending Address: {{commute.end_address}}</span></li>
+
+{% endfor %}
+</ol>
+	<form id="add_commute_form" action="/commutes/add" method="post">
+        {% csrf_token %}
+		<input type="hidden" name="user" value="{{user.id}}" />
+		<input type="hidden" name="waypoints" value="" />
+		<label>Start Time:</label>
+		<input type="text" name="start_time" placeholder="Start Time" />
+		<label>Start Address:</label>
+		<input type="text" name="start_address" placeholder="Ex: 123 Main Street" />
+		<label>End Address:</label>
+		<input type="text" name="end_address" placeholder="Ex: 987 West Nowhere Avenue" />
+		<button type="submit">Add</button>
+	</form>
+
+	<div id="gmapCont"></div>
+
 
 <div class="signup">
   <a href="/signup">Click here to signup!</a>

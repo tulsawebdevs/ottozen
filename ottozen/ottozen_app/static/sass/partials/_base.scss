@@ -67,14 +67,14 @@ $list-left-margin: 2em;  // left margin for ul an ol
 
 //$base-color: #bad;
 $base-color: #666;
-$base-header-color: #FF771D;
+$base-header-color: #8695a8;
 //$base-header-color: #bad;
 $base-button-color: #2D72B1;
 //$base-button-color: #bada55;
 
 $base-grey: #999;
 
-$base-bg: #e6e6e6;
+$base-bg: lighten( #bada55, 30% );
 
 $base-hover-opacity: 0.7;
 
@@ -103,13 +103,13 @@ $base-line-height: 18px;
 $experimental-support-for-svg: true;
 
 
-@include establish-baseline(12px);
+@include establish-baseline(14px);
 
 
 
-//$pie-behavior: url("/PIE.htc");
-$pie-behavior: url("/PIE.php");
-//$pie-behavior: url("/~ben/owasso/PIE.php"); //CHANGE THIS ON LAUNCH!!!
+$pie-behavior: url("/PIE.htc");
+//$pie-behavior: url("/PIE.php");
+//$pie-behavior: url("/static/pie/PIE.php"); //CHANGE THIS ON LAUNCH!!!
 $pie-base-class: pie;
 .pie{
 	@include pie-element(relative);
@@ -254,3 +254,7 @@ $pie-base-class: pie;
 	font-family: 'Cuprum', Arial, 'Helvetica Neue', Helvetica, sans-serif;
 }
 
+
+@mixin default_type{
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
