@@ -1,10 +1,15 @@
 (function($){
 	
+	var maincont;
+	
 	$(document).ready(function(){
-		
-		console.log('herro ready');
+				
+		maincont = $('#main-container');
 		
 		loginForm();
+
+		console.log('herro ready', maincont);
+
 		
 	});
 	
@@ -13,21 +18,28 @@
 			
 			var form = $('#login-cont').find('form'),
 				uname = form.find('[name="dummy_name"]'),
-				pass = form.find('[name="password"]');
+				pass = form.find('[name="password"]'),
+				errorCont = form.find('.login-error');
 			
 			form.submit(function(e){
 				
 				e.preventDefault();
 				
-				$.post( form.attr('action'), form.serialize(), function(data, status){
+				//hide the arror alert if it is showing.
+				errorCont.hide();
+				
+				var jqxhr = $.post( form.attr('action'), form.serialize(), function(data, status){
 					
 					console.log('login post', data, status);
 					
-					if ( status === 'success' ) {
-						//do stuff
-					} else {
-						//error, do other stuff
-					}
+					//do stuff
+					window.location.href = window.location.href + 'myroutes';
+				}).error(function(data){
+					
+					console.log('login error');
+					
+					errorCont.html( data ).show();
+					
 				});
 				
 			});
