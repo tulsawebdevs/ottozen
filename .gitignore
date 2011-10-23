@@ -5,3 +5,10 @@
 # Added by sharing a folder on OS X 
 .com.apple.timemachine.supported
 
+# Heroku wants to install virtualenv in the same folder
+bin
+build
+include
+lib
+.Python
+
