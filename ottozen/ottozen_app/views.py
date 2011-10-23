@@ -1,7 +1,7 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.create_update import create_object
 
 from forms import LoginForm, ProfileForm
@@ -73,6 +73,10 @@ def do_login(request):
     status = 401
     
   return HttpResponse(message, status=status)
+
+def do_logout(request):
+  logout(request)
+  return redirect('home')
 
 def old_add(request):
     return create_object(request, model=Route, login_required=True,

@@ -23,6 +23,9 @@ class Point(models.Model):
     longitude = models.DecimalField(max_digits=13, decimal_places=8,
                                     null=True, blank=True)
 
+    def __unicode__(self):
+      return "%s's %s" % (self.user.username, self.name)
+
 
 class Route(models.Model):
     user = models.ForeignKey(User)
@@ -32,13 +35,17 @@ class Route(models.Model):
     objects = RouteManager()
 
     def __unicode__(self):
-        return self.user.username + ' from ' + self.start_address + ' to ' + self.end_address
+      return "Route %s %s" % (self.user.username, self.id)
+#        return self.user.username + ' from ' + self.start_address + ' to ' + self.end_address
 
 
 class RoutePoint(models.Model):
     route = models.ForeignKey(Route)
     point = models.ForeignKey(Point)
     sequence = models.IntegerField()
+
+    def __unicode__(self):
+      return "Route Point %s for %s (%s)" % (self.sequence, self.route, self.point)
 
 
 class Alert(models.Model):
