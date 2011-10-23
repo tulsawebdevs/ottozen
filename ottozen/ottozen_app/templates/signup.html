@@ -11,6 +11,9 @@ margin:1em;
 .signupbox td{
 padding:1em;
 }
+.signupbox .text{
+color:#ddd;
+}
 </style>
 
 <h1>How do we contact you?</h1>
@@ -19,25 +22,13 @@ padding:1em;
 <form action="/accounts/profile/" method="post">{% csrf_token %}
 	<tr>
 		<td><label>Mobile #:</label></td>
-		<td> <input type="text" placeholder="123-456-7890"></td>
+		<td> <input type="text" value="" placeholder="123-456-7890"></td>
 	</tr>
 	<tr>
 		<td><label>Email:</label></td>
-		<td> <input type="text" placeholder="myname@email.com"></td>
-	</tr>
-		<td><label>Address:</label></td>
-		<td> <input type="text" placeholder="123 Main Street"> </td>
-	</tr>
-	<tr>
-		<td><label>City:</label></td>
-		<td><input type="text" placeholder="City"> </td>
-	</tr>
-	<tr>
-		<td><input type="button" value="save" class="base bttn right">
-		</td
+		<td> <input type="text" value=""  placeholder="myname@email.com"></td>
 	</tr>
 </table>
-
   <div>
 	  <p>To confirm your mobile number, click the button below:</p>
 

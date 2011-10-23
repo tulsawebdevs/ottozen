@@ -443,6 +443,10 @@ input:focus {
   display: inline-block;
   width: 200px;
 }
+#banner #login-cont p a{
+font-weight:bold;
+text-decoration:none;
+}
 /* line 63, ../sass/otto.scss */
 #banner #login-cont h3 {
   font-size: 1.333em;
@@ -540,7 +544,7 @@ a.base.bttn {
   padding-bottom: 1.5em;
   padding-left: 1em;
   padding-right: 1em;
-  border: 1px solid #ffe102;
+  border: 1px solid #ccc;
   background: white;
   -pie-background: linear-gradient(top, #8695a8 0%, #dfe3e8 1%, #ffffff 100%);
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg2OTVhOCIvPjxzdG9wIG9mZnNldD0iMSUiIHN0b3AtY29sb3I9IiNkZmUzZTgiLz48c3RvcCBvZmZzZXQ9IjglIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
@@ -556,8 +560,9 @@ a.base.bttn {
 #maincontent h1 {
   font-size: 2.333em;
   line-height: 1.286em;
-  text-shadow: #666666 -1px 1px 2px;
+  text-shadow: 2px 2px 2px #bbb;
   margin-bottom: 0.375em;
+  font-family:Calibri;
 }
 /* line 114, ../sass/otto.scss */
 #maincontent #add_commute_form {
@@ -594,6 +599,7 @@ a.base.bttn {
   display: block;
   height: 320px;
   width: 500px;
+  border:1px solid #ccc;
 }
 
 /* line 168, ../sass/otto.scss */
@@ -703,4 +709,6 @@ a.base.bttn {
   width: 740px;
   display: block;
   margin-right: 20px;
+}
+;
 }
