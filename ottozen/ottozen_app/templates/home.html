@@ -11,8 +11,8 @@
 			<iframe title="" style="width: 300px; height: 20px;" class="twitter-follow-button" src="http://platform.twitter.com/widgets/follow_button.html#_=1319397142763&amp;align=&amp;button=blue&amp;id=twitter_tweet_button_0&amp;lang=en&amp;link_color=&amp;screen_name=otto_zen&amp;show_count=false&amp;show_screen_name=&amp;text_color=" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
 			<script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
 		</section>
-	</div>	
-	
+	</div>
+
 	<div class="twitter-tell">
 		<header>Tell your commuting friends about Otto Zen:</header>
 		<section>
@@ -36,16 +36,16 @@
 	</ol>
 
 	<form id="add_commute_form" action="/commutes/add" method="post">
-		{% csrf_token %}
 		<input type="hidden" name="user" value="{{user.id}}" />
 		<input type="hidden" name="waypoints" value="" />
-		<label>Start Time:</label>
-		<input type="text" name="start_time" placeholder="Start Time" />
+		<!--<label>Start Time:</label>
+		<input type="text" name="start_time" placeholder="Start Time" />-->
 		<label>Start Address:</label>
 		<input type="text" name="start_address" placeholder="Ex: 123 Main Street" />
 		<label>End Address:</label>
 		<input type="text" name="end_address" placeholder="Ex: 987 West Nowhere Avenue" />
-		<button class="base bttn" type="submit">Add commute</button>
+		<button class="base bttn" type="submit">Check Route</button>
+		{% csrf_token %}
 	</form>
 
 		<div id="gmapCont"></div>
