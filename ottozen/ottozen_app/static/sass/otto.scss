@@ -66,6 +66,11 @@ a, h1,h2,h3,h4,H1,H2,H3,H4{
 
 .base.bttn{
 	@include base-button;
+	@include adjust-font-size-to( 16px );
+}
+
+a.base.bttn{
+	text-decoration: none;
 }
 
 #maincontent{
@@ -79,6 +84,11 @@ a, h1,h2,h3,h4,H1,H2,H3,H4{
 	@include pie;
 	-pie-background: linear-gradient( top, $base-header-color 0%, lighten( $base-header-color, 30% ) 1%, lighten( $base-header-color, 100% ) 100% );
 	@include background( linear-gradient( top, $base-header-color 0%, lighten( $base-header-color, 30% ) 1%, lighten( $base-header-color, 100% ) 8% ) );
+
+	& h1{
+		@include adjust-font-size-to( 28px );
+		@include single-text-shadow( $base-color, -1px, 1px, 2px );
+	}
 }
 
 
@@ -131,17 +141,29 @@ margin:0.5em 1em;
 
 $leftnav-width: floor( $base-width * 0.15 );
 $rightnav-width: 200px;
+$container-margin: 20px;
 
 #leftnav, #rightnav{
 
-	background: #bad;
-
 
 	& > div{
+		border: 1px solid darken( $base-bg, 30% );
+		@include margin-trailer;
+		
 		& header{
+			padding-left: 1em;
+			padding-right: 1em;
+			@include padding-leader(0.5);
+			@include padding-trailer(0.5);
 			background: $base-bg;
 		}
 		& section{
+			padding-left: 1em;
+			padding-right: 1em;
+			@include padding-leader(0.5);
+			@include padding-trailer(0.5);
+			
+			background: darken( $box-bg, 5% );
 			
 			& img, & iframe{
 				display:block;
@@ -154,8 +176,16 @@ $rightnav-width: 200px;
 
 #leftnav{
 	@include float-left;
-	width: $leftnav-width;
+	//width: $leftnav-width;
+	@include margin-leader;
 
+	& > div{
+		display: inline-block;
+		margin-right: $container-margin;
+		width: $rightnav-width * 1.5;
+		
+		vertical-align:top;
+	}
 }
 
 #rightnav{
@@ -165,7 +195,9 @@ $rightnav-width: 200px;
 }
 
 #maincont{
-	width: $base-width - $leftnav-width - $rightnav-width - 20;
+	width: $base-width - $rightnav-width - $container-margin * 2;
+	display: block;
+	margin-right: $container-margin;
 }
 
 

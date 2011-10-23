@@ -4,6 +4,8 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>{% block title %}TITLE NOT SET{% endblock %}</title>
 <link rel='stylesheet' href='{{ STATIC_URL }}css/otto.css' >
+
+<script src="//maps.googleapis.com/maps/api/js?sensor=true" type="text/javascript"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
 <script type="text/javascript">
 	var Otto = {
@@ -23,7 +25,9 @@
 		<div class="clear"></div>	
     </header><!--end #banner-->
     <div id="maincontent">
-    {% block body %}{% endblock %}
+		{% block body %}{% endblock %}
+    
+		<div class="clear"></div>
     </div><!--end #maincontent-->
 </div><!--end #container-->
 <script type="text/javascript">
