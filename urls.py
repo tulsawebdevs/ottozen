@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'commute_alert.views.home', name='home'),
     # url(r'^commute_alert/', include('commute_alert.foo.urls')),
+    url(r'^$', 'ottozen.views.home', name='home'),
     ('', include('registration.urls')),
     ('', include('alerts.urls')),
     ('^accounts/profile/?', 'users.views.profile'),
