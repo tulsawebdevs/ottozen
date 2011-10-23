@@ -1,6 +1,9 @@
-<h3>Login</h3>
-<form action="/login/" method="post">{% csrf_token %}
-{{ form.as_p }}
-<input type="text" name="dummy_name" placeholder="Phone # -or- Email" />
-<button class="base bttn" type="submit">Submit</button>
-</form>
+<div id="login-cont">
+	<h3>Login</h3>
+	<form action="{% url login %}" method="post">{% csrf_token %}
+		<div class='login_error'></div>
+		<input type="text" name="dummy_name" placeholder="Phone # -or- Email" />
+		<input type="password" name="password" placeholder="Password"/>
+		<button class="base bttn" type="submit">Submit</button>
+	</form>
+</div>
