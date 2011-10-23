@@ -44,6 +44,9 @@ class RoutePoint(models.Model):
     point = models.ForeignKey(Point)
     sequence = models.IntegerField()
 
+    def __unicode__(self):
+      return "Route Point %s for %s (%s)" % (self.sequence, self.route, self.point)
+
 
 class Alert(models.Model):
     user = models.ForeignKey(User)
