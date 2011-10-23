@@ -11,6 +11,7 @@ urlpatterns = patterns('ottozen_app.views',
     url(r'^myroutes/?', 'myroutes', name='myroutes'),
     url(r'^phone/?', 'phone', name='phone'),
     url(r'^login/?', 'do_login', name='login'),
+    url(r'^logout/?', 'do_logout', name='logout'),
     #('', include('registration.urls')),
 
     #('', include('registration.urls')),
