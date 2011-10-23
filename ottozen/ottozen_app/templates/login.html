@@ -1,5 +1,5 @@
 {% if user.is_authenticated %}
-	<h3>Welcome{% if user.firstname %}, {{user.firstname}}{% endif %}!</h3>
+	<h3>Welcome{% if user.first_name %}, {{user.first_name}}{% endif %}!</h3>
 	<p><a href='{% url myroutes %}'>Skip to your routes</a></p>
 	<p><a href='{% url logout %}'>Logout</a></p>
 {% else %}
