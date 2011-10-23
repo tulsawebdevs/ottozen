@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -18,11 +19,12 @@ def myroutes(request):
 def phone(request):
   return render(request, 'phone.html')
 
-def login(request):
+def do_login(request):
   form = LoginForm(request.REQUEST)
   if form.is_valid():
     user = None
     ident = form.cleaned_data['dummy_name']
+    password = form.cleaned_data['password']
     
     if not user:
       try:
@@ -45,12 +47,19 @@ def login(request):
     if not user:
       message = "We couldn't find a matching mobile number or email"
       status = 401
-    elif user.check_password(form.cleaned_data['password']):
-      message = "OK"
-      status = 200
     else:
-      message = "Wrong password for %s" % ident
-      status = 401
+      a_user = authenticate(username=user.username, password=password)
+      if a_user is not None:
+        if a_user.is_active:
+          login(request, a_user)
+          message = "OK"
+          status = 200
+        else:
+          message = "Your account is disabled"
+          status = 401
+      else:
+        message = "Wrong password for %s" % ident
+        status = 401
   else:
     message = 'Please enter all fields'
     status = 401
