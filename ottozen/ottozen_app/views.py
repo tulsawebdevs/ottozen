@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.create_update import create_object
@@ -20,10 +21,38 @@ def phone(request):
 def login(request):
   form = LoginForm(request.REQUEST)
   if form.is_valid():
-    message = 'OK'
-    status = 200
+    user = None
+    ident = form.cleaned_data['dummy_name']
+    
+    if not user:
+      try:
+        user = User.objects.get(email=ident)
+      except User.DoesNotExist:
+        pass
+    
+    if not user:
+      try:
+        user = UserProfile.objects.get(mobile_num=ident).user
+      except UserProfile.DoesNotExist:
+        pass
+    
+    if not user:
+      try:
+        user = User.objects.get(username=ident)
+      except User.DoesNotExist:
+        pass
+    
+    if not user:
+      message = "We couldn't find a matching mobile number or email"
+      status = 401
+    elif user.check_password(form.cleaned_data['password']):
+      message = "OK"
+      status = 200
+    else:
+      message = "Wrong password for %s" % ident
+      status = 401
   else:
-    message = 'Bad Form'
+    message = 'Please enter all fields'
     status = 401
     
   return HttpResponse(message, status=status)
