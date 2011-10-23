@@ -1,3 +1,7 @@
 *.pyc
 *.swp
 *.db
+
+# Added by sharing a folder on OS X 
+.com.apple.timemachine.supported
+
