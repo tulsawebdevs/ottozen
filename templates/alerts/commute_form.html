@@ -193,7 +193,7 @@ $script.ready(['jquery'], function(){
 				//everything is alright, so submit the form
 				console.log('confirmation clicked', me.form.serialize() );
 				
-				window.location.href = window.location.href+'?'+me.form.serialize();
+                $.post(window.location.href, $('#add_commute_form').serialize())
 				
 			};
 			
@@ -241,6 +241,7 @@ $script.ready(['jquery'], function(){
 	<h3>Add a commute</h3>
 
 	<form id="add_commute_form" action="/commutes/add" method="post">
+        {% csrf_token %}
 		<input type="hidden" name="user" value="{{user.id}}" />
 		<input type="hidden" name="waypoints" value="" />
 		<label>Start Time:</label>
