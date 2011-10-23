@@ -1,3 +1,7 @@
+{% if user.is_authenticated %}
+	<h3>Welcome{% if user.firstname %}, {{user.firstname}}{% endif %}!</h3>
+	<p><a href='{% url myroutes %}'>Skip to your routes</a></p>
+{% else %}
 <div id="login-cont">
 	<h3>Login</h3>
 	<form action="{% url login %}" method="post">{% csrf_token %}
@@ -7,3 +11,5 @@
 		<button class="base bttn" type="submit">Submit</button>
 	</form>
 </div>
+{% endif %}
+
