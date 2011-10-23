@@ -12,8 +12,16 @@ def signup(request):
   return render(request, 'signup.html')
   
 def myroutes(request):
-  return render(request, 'myroutes.html')
+  try:
+    profile = request.user.get_profile()
+  except UserProfile.DoesNotExist:
+    profile = UserProfile.objects.create(user=request.user)
 
+  #commutes = Commute.objects.filter(user=request.user)
+  profile = request.user.get_profile()
+  print profile.mobile_num
+  return render(request, 'myroutes.html', {'mobile_num': profile.mobile_num})
+    
 def login(request):
   form = LoginForm(request.REQUEST)
   if form.is_valid():

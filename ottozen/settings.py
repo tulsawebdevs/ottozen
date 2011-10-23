@@ -124,7 +124,7 @@ INSTALLED_APPS = (
     'ottozen_app',
 )
 
-AUTH_PROFILE_MODULE = 'users.UserProfile'
+AUTH_PROFILE_MODULE = 'ottozen_app.UserProfile'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 

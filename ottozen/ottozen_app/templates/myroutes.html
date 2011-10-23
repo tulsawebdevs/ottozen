@@ -222,7 +222,7 @@ $script.ready(['jquery'], function(){
 {% endblock %}
 {% block body %}
 
-<h1>Hi {{ user.username }}! Here are your routes!</h1>
+<h1>Hi {% firstof user.first_name user.username %}! Here are your routes!</h1>
 
 <h2>Route 1 {{routename}}</h2>
 <div id="mapwrap">
@@ -263,22 +263,14 @@ $script.ready(['jquery'], function(){
 
 <h3>My User Profile</h3>
    <table class="addressbox">
-  <form action="/accounts/profile/" method="post">{% csrf_token %}
+  <form action="/myroutes/" method="post">{% csrf_token %}
   <tr>
-  <td><label>Mobile #:</label></td>
-  <td> {{ form.mobile_num }} </td>
+    <td><label>Mobile #:</label></td>
+    <td> {{ mobile_num }} </td>
   </tr>
   <tr>
-   <tr>
-   <td><label>Email:</label></td>
-   <td> {{ user.email }} </td>
-  </tr>
-  <td><label>Address:</label></td>
-  <td> {{ form.home_address }} </td>
-  </tr>
-  <tr>
-  <td><label>City:</label></td>
-  <td> {{ form.home_city }} </td>
+    <td><label>Email:</label></td>
+    <td> {{ user.email }} </td>
   </tr>
 </table><!--end addressbox-->
 
