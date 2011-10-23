@@ -2,6 +2,7 @@
 
 import os.path
 base_dir = os.path.dirname(__file__)
+base_dir_name = os.path.split(base_dir)[1]
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 path = lambda *a: os.path.join(ROOT, *a)
@@ -106,7 +107,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'ottozen.urls'
+ROOT_URLCONF = '%s.urls' % base_dir_name
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
