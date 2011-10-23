@@ -210,7 +210,7 @@ $script.ready(['jquery'], function(){
 				if ( me.waypoints.length )
 					me.form.find('[name="waypoints"]').val( JSON.stringify( me.waypoints ) );
 				
-				window.location.href = window.location.href+'?'+me.form.serialize();
+                $.post(window.location.href, $('#add_commute_form').serialize())
 				
 			};
 			
@@ -261,6 +261,7 @@ $script.ready(['jquery'], function(){
 	<h3>Add a commute</h3>
 
 	<form id="add_commute_form" action="/commutes/add" method="post">
+        {% csrf_token %}
 		<input type="hidden" name="user" value="{{user.id}}" />
 		<input type="hidden" name="waypoints" value="" />
 		<label>Start Time:</label>
