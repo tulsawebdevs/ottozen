@@ -372,13 +372,13 @@ input:invalid, textarea:invalid {
     page-break-after: avoid;
   }
 }
-/* line 51, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+/* line 51, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
 body {
   font-size: 87.5%;
   line-height: 1.286em;
 }
 
-/* line 55, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+/* line 55, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
 html > body {
   font-size: 14px;
 }
@@ -443,10 +443,6 @@ input:focus {
   display: inline-block;
   width: 200px;
 }
-#banner #login-cont p a{
-font-weight:bold;
-text-decoration:none;
-}
 /* line 63, ../sass/otto.scss */
 #banner #login-cont h3 {
   font-size: 1.333em;
@@ -477,8 +473,12 @@ text-decoration:none;
   float: right;
   margin-right: 10px;
 }
+/* line 84, ../sass/otto.scss */
+#banner #login-cont .login_error {
+  color: red;
+}
 
-/* line 87, ../sass/otto.scss */
+/* line 90, ../sass/otto.scss */
 .base.bttn {
   font-family: sans-serif;
   padding: 0 1em;
@@ -532,19 +532,19 @@ text-decoration:none;
   background: #b3b3b3;
 }
 
-/* line 92, ../sass/otto.scss */
+/* line 95, ../sass/otto.scss */
 a.base.bttn {
   text-decoration: none;
 }
 
-/* line 96, ../sass/otto.scss */
+/* line 99, ../sass/otto.scss */
 #maincontent {
   display: block;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
   padding-left: 1em;
   padding-right: 1em;
-  border: 1px solid #ccc;
+  border: 1px solid #ffe102;
   background: white;
   -pie-background: linear-gradient(top, #8695a8 0%, #dfe3e8 1%, #ffffff 100%);
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg2OTVhOCIvPjxzdG9wIG9mZnNldD0iMSUiIHN0b3AtY29sb3I9IiNkZmUzZTgiLz48c3RvcCBvZmZzZXQ9IjglIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
@@ -556,15 +556,14 @@ a.base.bttn {
   -pie-background: linear-gradient(top, #8695a8 0%, #dfe3e8 1%, #ffffff 8%);
   background: linear-gradient(top, #8695a8 0%, #dfe3e8 1%, #ffffff 8%);
 }
-/* line 108, ../sass/otto.scss */
+/* line 111, ../sass/otto.scss */
 #maincontent h1 {
   font-size: 2.333em;
   line-height: 1.286em;
-  text-shadow: 2px 2px 2px #bbb;
+  text-shadow: #666666 -1px 1px 2px;
   margin-bottom: 0.375em;
-  font-family:Calibri;
 }
-/* line 114, ../sass/otto.scss */
+/* line 117, ../sass/otto.scss */
 #maincontent #add_commute_form {
   display: inline;
   float: right;
@@ -574,7 +573,7 @@ a.base.bttn {
   margin-bottom: 1.5em;
   margin-right: 1em;
 }
-/* line 128, ../sass/otto.scss */
+/* line 131, ../sass/otto.scss */
 #maincontent #add_commute_form label {
   color: #2c6fad;
   font-size: 1.167em;
@@ -583,7 +582,7 @@ a.base.bttn {
   margin-bottom: 0.375em;
   display: block;
 }
-/* line 138, ../sass/otto.scss */
+/* line 141, ../sass/otto.scss */
 #maincontent #add_commute_form input {
   margin-bottom: 1.5em;
   width: 160px;
@@ -592,17 +591,16 @@ a.base.bttn {
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
-/* line 149, ../sass/otto.scss */
+/* line 152, ../sass/otto.scss */
 #maincontent #gmapCont {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
   display: block;
   height: 320px;
   width: 500px;
-  border:1px solid #ccc;
 }
 
-/* line 168, ../sass/otto.scss */
+/* line 171, ../sass/otto.scss */
 #add_commute_confirm {
   margin: 12px auto;
   display: block;
@@ -613,34 +611,34 @@ a.base.bttn {
   border: 1px solid #64ff64;
 }
 
-/* line 178, ../sass/otto.scss */
+/* line 181, ../sass/otto.scss */
 #add_commute_confirm:hover {
   background: rgba(100, 255, 100, 0.5);
 }
 
-/* line 181, ../sass/otto.scss */
+/* line 184, ../sass/otto.scss */
 #add_commute_confirm:active {
   background: rgba(100, 255, 100, 0.7);
 }
 
-/* line 187, ../sass/otto.scss */
+/* line 190, ../sass/otto.scss */
 .clear {
   *zoom: 1;
 }
-/* line 38, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .clear:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* line 190, ../sass/otto.scss */
+/* line 193, ../sass/otto.scss */
 .right {
   display: inline;
   float: right;
 }
 
-/* line 193, ../sass/otto.scss */
+/* line 196, ../sass/otto.scss */
 .addressbox {
   background: none repeat scroll 0 0 #EEEEEE;
   display: block;
@@ -651,17 +649,17 @@ a.base.bttn {
   width: 300px;
 }
 
-/* line 202, ../sass/otto.scss */
+/* line 205, ../sass/otto.scss */
 .addressbox label {
   margin: 1em;
 }
 
-/* line 211, ../sass/otto.scss */
+/* line 214, ../sass/otto.scss */
 #leftnav > div, #rightnav > div {
   border: 1px solid #ffe102;
   margin-bottom: 1.5em;
 }
-/* line 215, ../sass/otto.scss */
+/* line 218, ../sass/otto.scss */
 #leftnav > div header, #rightnav > div header {
   padding-left: 1em;
   padding-right: 1em;
@@ -669,7 +667,7 @@ a.base.bttn {
   padding-bottom: 0.75em;
   background: #fff39b;
 }
-/* line 222, ../sass/otto.scss */
+/* line 225, ../sass/otto.scss */
 #leftnav > div section, #rightnav > div section {
   padding-left: 1em;
   padding-right: 1em;
@@ -677,19 +675,19 @@ a.base.bttn {
   padding-bottom: 0.75em;
   background: #fffce5;
 }
-/* line 230, ../sass/otto.scss */
+/* line 233, ../sass/otto.scss */
 #leftnav > div section img, #leftnav > div section iframe, #rightnav > div section img, #rightnav > div section iframe {
   display: block;
   margin-bottom: 0.75em;
 }
 
-/* line 239, ../sass/otto.scss */
+/* line 242, ../sass/otto.scss */
 #leftnav {
   display: inline;
   float: left;
   margin-top: 1.5em;
 }
-/* line 244, ../sass/otto.scss */
+/* line 247, ../sass/otto.scss */
 #leftnav > div {
   display: inline-block;
   margin-right: 20px;
@@ -697,18 +695,16 @@ a.base.bttn {
   vertical-align: top;
 }
 
-/* line 253, ../sass/otto.scss */
+/* line 256, ../sass/otto.scss */
 #rightnav {
   display: inline;
   float: right;
   width: 200px;
 }
 
-/* line 259, ../sass/otto.scss */
+/* line 262, ../sass/otto.scss */
 #maincont {
   width: 740px;
   display: block;
   margin-right: 20px;
-}
-;
 }
