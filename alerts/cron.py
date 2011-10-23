@@ -67,7 +67,7 @@ def send_alerts():
         try:
             client.sms.messages.create(
                 to=alert.user.get_profile().mobile_num,
-                from_='4155992671',
+                from_=settings.TWILIO_NUMBER,
                 body=alert.text)
             alert.sent=True
             alert.save()
