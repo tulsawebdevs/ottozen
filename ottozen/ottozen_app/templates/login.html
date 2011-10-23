@@ -1,12 +1,6 @@
-{% extends 'base.html' %}
-
-{% block title %}Login{% endblock %}
-
-{% block body %}
-<h1>Login</h1>
+<h3>Login</h3>
 <form action="/login/" method="post">{% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Submit" />
+<input type="text" name="dummy_name" placeholder="Phone # -or- Email" />
+<button class="base bttn" type="submit">Submit</button>
 </form>
-
-{% endblock %}

@@ -1,4 +1,4 @@
-/* line 14, ../sass/html5-boilerplate/_reset.scss */
+/* line 14, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
@@ -15,32 +15,32 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 23, ../sass/html5-boilerplate/_reset.scss */
+/* line 23, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* line 27, ../sass/html5-boilerplate/_reset.scss */
+/* line 27, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 blockquote, q {
   quotes: none;
 }
 
-/* line 30, ../sass/html5-boilerplate/_reset.scss */
+/* line 30, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../sass/html5-boilerplate/_reset.scss */
+/* line 32, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 ins {
   background-color: #ff9;
   color: #000;
   text-decoration: none;
 }
 
-/* line 34, ../sass/html5-boilerplate/_reset.scss */
+/* line 34, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 mark {
   background-color: #ff9;
   color: #000;
@@ -48,24 +48,24 @@ mark {
   font-weight: bold;
 }
 
-/* line 36, ../sass/html5-boilerplate/_reset.scss */
+/* line 36, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 del {
   text-decoration: line-through;
 }
 
-/* line 38, ../sass/html5-boilerplate/_reset.scss */
+/* line 38, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 abbr[title], dfn[title] {
   border-bottom: 1px dotted;
   cursor: help;
 }
 
-/* line 40, ../sass/html5-boilerplate/_reset.scss */
+/* line 40, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 42, ../sass/html5-boilerplate/_reset.scss */
+/* line 42, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_reset.scss */
 hr {
   display: block;
   height: 1px;
@@ -75,7 +75,7 @@ hr {
   padding: 0;
 }
 
-/* line 11, ../sass/html5-boilerplate/_fonts.scss */
+/* line 11, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_fonts.scss */
 body {
   font-size: 13px;
   font-family: sans-serif;
@@ -83,34 +83,34 @@ body {
   *font-size: small;
 }
 
-/* line 20, ../sass/html5-boilerplate/_fonts.scss */
+/* line 20, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_fonts.scss */
 pre, code, kbd, samp {
   font-family: monospace, sans-serif;
 }
 
-/* line 15, ../sass/html5-boilerplate/_styles.scss */
+/* line 15, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 html {
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 
-/* line 17, ../sass/html5-boilerplate/_styles.scss */
+/* line 17, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 ul, ol {
   margin-left: 2em;
 }
 
-/* line 18, ../sass/html5-boilerplate/_styles.scss */
+/* line 18, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 ol {
   list-style-type: decimal;
 }
 
-/* line 20, ../sass/html5-boilerplate/_styles.scss */
+/* line 20, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 td {
   vertical-align: top;
 }
 
-/* line 22, ../sass/html5-boilerplate/_styles.scss */
+/* line 22, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 sub {
   font-size: 75%;
   line-height: 0;
@@ -118,7 +118,7 @@ sub {
   bottom: -0.25em;
 }
 
-/* line 24, ../sass/html5-boilerplate/_styles.scss */
+/* line 24, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 sup {
   font-size: 75%;
   line-height: 0;
@@ -126,12 +126,12 @@ sup {
   top: -0.5em;
 }
 
-/* line 53, ../sass/html5-boilerplate/_styles.scss */
+/* line 53, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 a:hover, a:active {
   outline: none;
 }
 
-/* line 58, ../sass/html5-boilerplate/_styles.scss */
+/* line 58, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
@@ -139,12 +139,12 @@ pre {
   padding: 15px;
 }
 
-/* line 71, ../sass/html5-boilerplate/_styles.scss */
+/* line 71, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 label, input[type="button"], input[type="submit"], input[type="image"], button {
   cursor: pointer;
 }
 
-/* line 80, ../sass/html5-boilerplate/_styles.scss */
+/* line 80, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 button, input, select, textarea {
   width: auto;
   overflow: visible;
@@ -154,56 +154,56 @@ button, input, select, textarea {
   vertical-align: baseline;
 }
 
-/* line 84, ../sass/html5-boilerplate/_styles.scss */
+/* line 84, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 textarea {
   overflow: auto;
   vertical-align: text-top;
 }
 
-/* line 88, ../sass/html5-boilerplate/_styles.scss */
+/* line 88, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 input::-moz-focus-inner,
 button::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 99, ../sass/html5-boilerplate/_styles.scss */
+/* line 99, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 ::-moz-selection {
   background: #6ca4d8;
   color: white;
   text-shadow: none;
 }
 
-/* line 100, ../sass/html5-boilerplate/_styles.scss */
+/* line 100, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 ::selection {
   background: #6ca4d8;
   color: white;
   text-shadow: none;
 }
 
-/* line 105, ../sass/html5-boilerplate/_styles.scss */
+/* line 105, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 a:link {
   -webkit-tap-highlight-color: #6ca4d8;
 }
 
-/* line 118, ../sass/html5-boilerplate/_styles.scss */
+/* line 118, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 .ie7 img {
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 120, ../sass/html5-boilerplate/_styles.scss */
+/* line 120, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 .ie6 legend, .ie7 legend {
   margin-left: -7px;
 }
 
-/* line 125, ../sass/html5-boilerplate/_styles.scss */
+/* line 125, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_styles.scss */
 nav ul, nav li {
   margin: 0;
   list-style: none;
   list-style-image: none;
 }
 
-/* line 10, ../sass/html5-boilerplate/_helpers.scss */
+/* line 10, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_helpers.scss */
 .ir {
   text-indent: -119988px;
   overflow: hidden;
@@ -212,13 +212,13 @@ nav ul, nav li {
   background-repeat: no-repeat;
 }
 
-/* line 12, ../sass/html5-boilerplate/_helpers.scss */
+/* line 12, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_helpers.scss */
 .hidden {
   display: none;
   visibility: hidden;
 }
 
-/* line 14, ../sass/html5-boilerplate/_helpers.scss */
+/* line 14, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_helpers.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -229,7 +229,7 @@ nav ul, nav li {
   position: absolute;
   width: 1px;
 }
-/* line 50, ../sass/html5-boilerplate/_helpers.scss */
+/* line 50, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_helpers.scss */
 .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
   clip: auto;
   height: auto;
@@ -239,51 +239,51 @@ nav ul, nav li {
   width: auto;
 }
 
-/* line 16, ../sass/html5-boilerplate/_helpers.scss */
+/* line 16, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_helpers.scss */
 .clearfix {
   zoom: 1;
 }
-/* line 61, ../sass/html5-boilerplate/_helpers.scss */
+/* line 61, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_helpers.scss */
 .clearfix:before, .clearfix:after {
   content: "";
   display: table;
 }
-/* line 62, ../sass/html5-boilerplate/_helpers.scss */
+/* line 62, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_helpers.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 8, ../sass/partials/_page.scss */
+/* line 8, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_page.scss */
 body, select, input, textarea {
   color: #444444;
 }
 
-/* line 15, ../sass/partials/_page.scss */
+/* line 15, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_page.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-/* line 21, ../sass/partials/_page.scss */
+/* line 21, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_page.scss */
 a, a:active, a:visited {
   color: #607890;
 }
 
-/* line 22, ../sass/partials/_page.scss */
+/* line 22, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_page.scss */
 a:hover {
   color: #003366;
 }
 
-/* line 24, ../sass/partials/_page.scss */
+/* line 24, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_page.scss */
 strong, th {
   font-weight: bold;
 }
 
-/* line 28, ../sass/partials/_page.scss */
+/* line 28, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_page.scss */
 small {
   font-size: 85%;
 }
 
-/* line 37, ../sass/partials/_page.scss */
+/* line 37, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_page.scss */
 input:invalid, textarea:invalid {
   -moz-border-radius: 1px;
   -webkit-border-radius: 1px;
@@ -297,7 +297,7 @@ input:invalid, textarea:invalid {
   box-shadow: 0 0 5px 0 red;
 }
 
-/* line 42, ../sass/partials/_page.scss */
+/* line 42, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_page.scss */
 .no-boxshadow input:invalid,
 .no-boxshadow textarea:invalid {
   background-color: #f0dddd;
@@ -306,7 +306,7 @@ input:invalid, textarea:invalid {
 /*/mediaquery*/
 /*/mediaquery*/
 @media print {
-  /* line 10, ../sass/html5-boilerplate/_media.scss */
+  /* line 10, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   * {
     background: transparent !important;
     color: black !important;
@@ -315,44 +315,44 @@ input:invalid, textarea:invalid {
     -ms-filter: none !important;
   }
 
-  /* line 12, ../sass/html5-boilerplate/_media.scss */
+  /* line 12, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   a, a:visited {
     color: #444 !important;
     text-decoration: underline;
   }
 
-  /* line 13, ../sass/html5-boilerplate/_media.scss */
+  /* line 13, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   a[href]:after {
     content: " (" attr(href) ")";
   }
 
-  /* line 14, ../sass/html5-boilerplate/_media.scss */
+  /* line 14, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
 
-  /* line 15, ../sass/html5-boilerplate/_media.scss */
+  /* line 15, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
     content: "";
   }
 
-  /* line 16, ../sass/html5-boilerplate/_media.scss */
+  /* line 16, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   pre, blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-  /* line 17, ../sass/html5-boilerplate/_media.scss */
+  /* line 17, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   thead {
     display: table-header-group;
   }
 
-  /* line 18, ../sass/html5-boilerplate/_media.scss */
+  /* line 18, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   tr, img {
     page-break-inside: avoid;
   }
 
-  /* line 19, ../sass/html5-boilerplate/_media.scss */
+  /* line 19, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   img {
     max-width: 100% !important;
   }
@@ -361,30 +361,30 @@ input:invalid, textarea:invalid {
     margin: 0.5cm;
 }
 
-  /* line 21, ../sass/html5-boilerplate/_media.scss */
+  /* line 21, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
 
-  /* line 22, ../sass/html5-boilerplate/_media.scss */
+  /* line 22, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/html5-boilerplate/_media.scss */
   h2, h3 {
     page-break-after: avoid;
   }
 }
-/* line 51, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+/* line 51, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
 body {
   font-size: 87.5%;
   line-height: 1.286em;
 }
 
-/* line 55, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+/* line 55, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
 html > body {
   font-size: 14px;
 }
 
-/* line 114, ../sass/partials/_base.scss */
-.pie, #maincontent {
+/* line 114, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_base.scss */
+.pie, .base.bttn, #maincontent {
   behavior: url("/PIE.htc");
   position: relative;
 }
@@ -459,6 +459,58 @@ a, h1, h2, h3, h4, H1, H2, H3, H4 {
 }
 
 /* line 67, ../sass/otto.scss */
+.base.bttn {
+  font-family: sans-serif;
+  padding: 0 1em;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
+  background: #2d72b1;
+  border: 1px solid transparent;
+  color: #fff;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiM0MjhjY2YiLz48c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iIzJkNzJiMSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(50%, #428ccf), color-stop(51%, #2d72b1));
+  background-image: -webkit-linear-gradient(top, #428ccf 50%, #2d72b1 51%);
+  background-image: -moz-linear-gradient(top, #428ccf 50%, #2d72b1 51%);
+  background-image: -o-linear-gradient(top, #428ccf 50%, #2d72b1 51%);
+  background-image: -ms-linear-gradient(top, #428ccf 50%, #2d72b1 51%);
+  background-image: linear-gradient(top, #428ccf 50%, #2d72b1 51%);
+  -pie-background: linear-gradient(top, #428ccf 50%, #2d72b1 51%);
+}
+/* line 196, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_base.scss */
+.base.bttn:hover:hover {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQyOGNjZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkNzJiMSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #428ccf), color-stop(100%, #2d72b1));
+  background-image: -webkit-linear-gradient(top, #428ccf, #2d72b1);
+  background-image: -moz-linear-gradient(top, #428ccf, #2d72b1);
+  background-image: -o-linear-gradient(top, #428ccf, #2d72b1);
+  background-image: -ms-linear-gradient(top, #428ccf, #2d72b1);
+  background-image: linear-gradient(top, #428ccf, #2d72b1);
+  -pie-background: linear-gradient(top, #428ccf, #2d72b1);
+}
+/* line 210, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_base.scss */
+.base.bttn:hover:active {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjEwMCUiIHgyPSI1MCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQyOGNjZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkNzJiMSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #428ccf), color-stop(100%, #2d72b1));
+  background-image: -webkit-linear-gradient(bottom, #428ccf, #2d72b1);
+  background-image: -moz-linear-gradient(bottom, #428ccf, #2d72b1);
+  background-image: -o-linear-gradient(bottom, #428ccf, #2d72b1);
+  background-image: -ms-linear-gradient(bottom, #428ccf, #2d72b1);
+  background-image: linear-gradient(bottom, #428ccf, #2d72b1);
+  -pie-background: linear-gradient(bottom, #428ccf, #2d72b1);
+}
+/* line 236, /home/benjamin/code/ottozen/ottozen/ottozen_app/static/sass/partials/_base.scss */
+.base.bttn.loading {
+  background: #b3b3b3;
+}
+
+/* line 71, ../sass/otto.scss */
 #maincontent {
   padding-top: 1.5em;
   padding-bottom: 1.5em;
@@ -477,7 +529,7 @@ a, h1, h2, h3, h4, H1, H2, H3, H4 {
   background: linear-gradient(top, #8695a8 0%, #dfe3e8 1%, #ffffff 8%);
 }
 
-/* line 79, ../sass/otto.scss */
+/* line 83, ../sass/otto.scss */
 #gmapCont {
   display: block;
   height: 400px;
@@ -486,7 +538,7 @@ a, h1, h2, h3, h4, H1, H2, H3, H4 {
   margin-right: auto;
 }
 
-/* line 87, ../sass/otto.scss */
+/* line 91, ../sass/otto.scss */
 #add_commute_confirm {
   margin: 12px auto;
   display: block;
@@ -497,39 +549,39 @@ a, h1, h2, h3, h4, H1, H2, H3, H4 {
   border: 1px solid #64ff64;
 }
 
-/* line 97, ../sass/otto.scss */
+/* line 101, ../sass/otto.scss */
 #add_commute_confirm:hover {
   background: rgba(100, 255, 100, 0.5);
 }
 
-/* line 100, ../sass/otto.scss */
+/* line 104, ../sass/otto.scss */
 #add_commute_confirm:active {
   background: rgba(100, 255, 100, 0.7);
 }
 
-/* line 103, ../sass/otto.scss */
+/* line 107, ../sass/otto.scss */
 #add_commute_form {
   margin: 0.5em 1em;
 }
 
-/* line 106, ../sass/otto.scss */
+/* line 110, ../sass/otto.scss */
 .clear {
   *zoom: 1;
 }
-/* line 38, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .clear:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* line 109, ../sass/otto.scss */
+/* line 113, ../sass/otto.scss */
 .right {
   display: inline;
   float: right;
 }
 
-/* line 112, ../sass/otto.scss */
+/* line 116, ../sass/otto.scss */
 .addressbox {
   background: none repeat scroll 0 0 #EEEEEE;
   display: block;
@@ -540,12 +592,12 @@ a, h1, h2, h3, h4, H1, H2, H3, H4 {
   width: 300px;
 }
 
-/* line 121, ../sass/otto.scss */
+/* line 125, ../sass/otto.scss */
 .addressbox label {
   margin: 1em;
 }
 
-/* line 126, ../sass/otto.scss */
+/* line 130, ../sass/otto.scss */
 #leftnav {
   width: 200px;
 }

@@ -64,6 +64,10 @@ a, h1,h2,h3,h4,H1,H2,H3,H4{
 	}
 }
 
+.base.bttn{
+	@include base-button;
+}
+
 #maincontent{
 
 	@include padding-leader;
