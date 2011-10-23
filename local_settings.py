@@ -12,8 +12,14 @@ DATABASES = {
 }
 DEBUG=True
 
+class ExceptionLoggingMiddleware(object):
+    def process_exception(self, request, exception):
+        import traceback
+        print traceback.format_exc()
+
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'settings.ExceptionLoggingMiddleware',
 )
 
 INSTALLED_APPS = INSTALLED_APPS + (
