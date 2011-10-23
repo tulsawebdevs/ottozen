@@ -16,7 +16,7 @@ class RouteManager(models.Manager):
 
 class Point(models.Model):
     name = models.CharField(max_length=255, db_index=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='point')
     address = models.CharField(max_length=255, blank=True)
     latitude = models.DecimalField(max_digits=13, decimal_places=8, null=True,
                                    blank=True)
@@ -28,7 +28,7 @@ class Point(models.Model):
 
 
 class Route(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='routes')
     start_time = models.TimeField(null=True)
     waypoints = models.ManyToManyField(Point, through='RoutePoint')
 
@@ -37,7 +37,7 @@ class Route(models.Model):
     def __unicode__(self):
       return "Route %s %s" % (self.user.username, self.id)
 #        return self.user.username + ' from ' + self.start_address + ' to ' + self.end_address
-
+ 
 
 class RoutePoint(models.Model):
     route = models.ForeignKey(Route)
