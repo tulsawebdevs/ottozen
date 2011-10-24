@@ -173,6 +173,22 @@
 		me.configureForm = function(){
 			//get that
 			me.form = $('#add_commute_form');
+
+			if ( $('#user-routes').length && $('#user-routes').find('.route').length ) {
+				var routes = $('#user-routes').find('.route');
+				
+				var time = routes.last().attr('time');
+				me.startAddy = routes.last().children().first().attr('addy');
+				me.endAddy = routes.last().children().last().attr('addy');
+				
+				me.form.find('[name="start_address"]').val( me.startAddy );
+				me.form.find('[name="end_address"]').val( me.endAddy );
+				me.form.find('[name="time"]').val( time );
+				console.log('ROUTES!', routes);
+				
+				me.getRoute();
+			}
+			
 			//handle that
 			me.form.submit(me.formSubmit);
 		};

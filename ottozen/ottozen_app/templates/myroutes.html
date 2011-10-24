@@ -38,11 +38,16 @@
 </div><!--end #rightnav-->
 
 <a style="button" href="/commutes/add">Add a Commute</a><br />
-<ol>
-{% for commute in commutes %}
-<li><span class="time">{{commute.start_time}}</span><span class="from">From: {{commute.start_address}}</span><span class="to">To: {{commute.end_address}}</span></li>
+<ol id="user-routes">
+{% for route in user.routes.all %}
+	<li class="route" route="{{ route }}" time="{{ route.start_time }}">
+		{% for point in route.waypoints.all %}
+		  <span class="point" point="{{ point }}" addy="{{ point.address }}" lat="{{ point.latitude }}" lng="{{ point.longitude }}">{{ point.address }}</span>
+		{% endfor %}
+    </li>
 {% endfor %}
 </ol>
+
 	<form id="add_commute_form" action="/commutes/add" method="post">
         {% csrf_token %}
 		<input type="hidden" name="user" value="{{user.id}}" />
@@ -55,17 +60,6 @@
 		<input type="text" name="end_address" placeholder="Ex: 987 West Nowhere Avenue" />
 		<button type="submit">Add</button>
 	</form>
-
-<div>
-  hello
-  {% for route in user.routes.all %}
-    Route: {{ route }}
-    {% for point in route.waypoints.all %}
-      Point: {{ point }}
-      Point Address: {{ point.address }}
-    {% endfor %}
-  {% endfor %}
-</div>
 
 <div id="user_data">
 
