@@ -6,64 +6,10 @@
 
 <h1>Hi {% firstof user.first_name user.username %}! Here are your routes!</h1>
 
-<h2>Route 1 {{routename}}</h2>
-<div id="mapwrap">
-	<div id="gmapCont"></div>
-</div><!--end #mapwrap-->
-
-<div id="alerts">
-
-	<h3>Alerts</h3>
-
-		<p>Alert me about issues on this route between:</p>
-		<table class="addressbox">
-		<tr><td><label>start time:</label><input type="text" value="7:00 am"></input></td></tr>
-		<tr><td>and</td></tr>
-		<tr><td><label>end time:</label><input type="text" value="7:00 am"></input></td></tr>
-		</table>
-
-</div><!--end #alerts-->
-
-<div id="waypoints">
-
-	<h3>Waypoints</h3>
-
-		<p>Add a waypoint by clicking your route on the map and dragging the line to your stop-off locations (ie: kid's school, drycleaners). Or, enter waypoint addresses below:</p>
-		<table class="addressbox">
-		<tr><td><label>waypoint location:</label><input type="text" value="123 main street"></input></td></tr>
-		<tr><td><input class="base bttn right" type="button" value="save waypoint"></input></td></tr>
-		</table>
-
-
-</div><!--end #rightnav-->
-
-<a style="button" href="/commutes/add">Add a Commute</a><br />
-<ol>
-{% for commute in commutes %}
-<li><span class="time">{{commute.start_time}}</span><span class="from">From: {{commute.start_address}}</span><span class="to">To: {{commute.end_address}}</span></li>
-{% endfor %}
-</ol>
-	<form id="add_commute_form" action="/commutes/add" method="post">
-        {% csrf_token %}
-		<input type="hidden" name="user" value="{{user.id}}" />
-		<input type="hidden" name="waypoints" value="" />
-		<label>Start Time:</label>
-		<input type="text" name="start_time" placeholder="Start Time" />
-		<label>Start Address:</label>
-		<input type="text" name="start_address" placeholder="Ex: 123 Main Street" />
-		<label>End Address:</label>
-		<input type="text" name="end_address" placeholder="Ex: 987 West Nowhere Avenue" />
-		<button type="submit">Add</button>
-	</form>
-
-<div>
-  hello
-  {{route.model.name}}
-</div>
-
 <div id="user_data">
 
-<h3>My User Profile</h3>
+<h2>Contact Info for {% firstof user.first_name user.username %}
+  {{route.model.name}}</h2>
    <table class="addressbox">
   <form action="/myroutes/" method="post">{% csrf_token %}
   <tr>
@@ -74,9 +20,53 @@
     <td><label>Email:</label></td>
     <td> {{ user.email }} </td>
   </tr>
+  <tr colspan="2">
+    <td>  <input type="submit" value="Submit" /> <br/ ></td>
+  </tr>
 </table><!--end addressbox-->
-
-  <input type="submit" value="Submit" /> <br/ >
   </form>
 </div><!--end #user_data-->
+
+<h2>My Routes</h2>
+
+<h3>Route 1 {{routename}}</h2>
+<div id="mapwrap" style="float:left">
+	<div id="gmapCont"></div>
+</div><!--end #mapwrap-->
+
+<div id="routeinfo">
+  <form id="add_commute_form" action="/commutes/add" method="post">
+        {% csrf_token %}
+  	<input type="hidden" name="user" value="{{user.id}}" />
+  	<input type="hidden" name="waypoints" value="" />
+  	<label>Start Time:</label>
+  	<input type="text" name="start_time" placeholder="Start Time" />
+  	<label>Start Address:</label>
+  	<input type="text" name="start_address" placeholder="Ex: 123 Main Street" />
+  	<label>End Address:</label>
+  	<input type="text" name="end_address" placeholder="Ex: 987 West Nowhere Avenue" />
+  	<button type="submit">Add</button>
+  </form>
+</div>
+
+<div class="clearfix"></div>
+
+<a style="button" href="/commutes/add">Add a Commute</a><br />
+<ol>
+{% for commute in commutes %}
+<li><span class="time">{{commute.start_time}}</span><span class="from">From: {{commute.start_address}}</span><span class="to">To: {{commute.end_address}}</span></li>
+{% endfor %}
+</ol>
+
+<div>
+  hello
+  {% for route in user.routes.all %}
+    Route: {{ route }}
+    {% for point in route.waypoints.all %}
+      Point: {{ point }}
+      Point Address: {{ point.address }}
+    {% endfor %}
+  {% endfor %}
+</div>
+
 {% endblock %}
