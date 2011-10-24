@@ -51,6 +51,16 @@
 
 <div class="clearfix"></div>
 
+<ol id="user-routes">
+{% for route in user.routes.all %}
+	<li class="route" route="{{ route }}" time="{{ route.start_time }}">
+		{% for point in route.waypoints.all %}
+		  <span class="point" point="{{ point }}" addy="{{ point.address }}" lat="{{ point.latitude }}" lng="{{ point.longitude }}">{{ point.address }}</span>
+		{% endfor %}
+    </li>
+{% endfor %}
+</ol>
+
 <a href="#" class="base bttn">Add a Route</a>
 
 {% endblock %}
