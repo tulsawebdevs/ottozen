@@ -52,21 +52,47 @@
 <div class="clearfix"></div>
 
 <a style="button" href="/commutes/add">Add a Commute</a><br />
-<ol>
-{% for commute in commutes %}
-<li><span class="time">{{commute.start_time}}</span><span class="from">From: {{commute.start_address}}</span><span class="to">To: {{commute.end_address}}</span></li>
+<ol id="user-routes">
+{% for route in user.routes.all %}
+	<li class="route" route="{{ route }}" time="{{ route.start_time }}">
+		{% for point in route.waypoints.all %}
+		  <span class="point" point="{{ point }}" addy="{{ point.address }}" lat="{{ point.latitude }}" lng="{{ point.longitude }}">{{ point.address }}</span>
+		{% endfor %}
+    </li>
 {% endfor %}
 </ol>
 
-<div>
-  hello
-  {% for route in user.routes.all %}
-    Route: {{ route }}
-    {% for point in route.waypoints.all %}
-      Point: {{ point }}
-      Point Address: {{ point.address }}
-    {% endfor %}
-  {% endfor %}
-</div>
+	<form id="add_commute_form" action="/commutes/add" method="post">
+        {% csrf_token %}
+		<input type="hidden" name="user" value="{{user.id}}" />
+		<input type="hidden" name="waypoints" value="" />
+		<label>Start Time:</label>
+		<input type="text" name="start_time" placeholder="Start Time" />
+		<label>Start Address:</label>
+		<input type="text" name="start_address" placeholder="Ex: 123 Main Street" />
+		<label>End Address:</label>
+		<input type="text" name="end_address" placeholder="Ex: 987 West Nowhere Avenue" />
+		<button type="submit">Add</button>
+	</form>
+
+<div id="user_data">
+
+<h3>My User Profile</h3>
+   <table class="addressbox">
+  <form action="/myroutes/" method="post">{% csrf_token %}
+  <tr>
+    <td><label>Mobile #:</label></td>
+    <td> {{ mobile_num }} </td>
+  </tr>
+  <tr>
+    <td><label>Email:</label></td>
+    <td> {{ user.email }} </td>
+  </tr>
+</table><!--end addressbox-->
+
+  <input type="submit" value="Submit" /> <br/ >
+  </form>
+</div><!--end #user_data-->
+
 
 {% endblock %}
