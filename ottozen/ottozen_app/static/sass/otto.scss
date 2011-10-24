@@ -84,6 +84,10 @@ input{
         & .login_error {
             color: red;
         }
+        & a {
+            text-decoration: none;
+            font-weight: bold;
+        }
 	}
 }
 
@@ -102,7 +106,7 @@ a.base.bttn{
 	@include padding-trailer;
 	padding-left: 1em;
 	padding-right:1em;
-	border: 1px solid darken( $base-bg, 30% );
+	border: 1px solid darken( $light-grey, 30% );
 	background: $box-bg;
 	@include pie;
 	-pie-background: linear-gradient( top, $base-header-color 0%, lighten( $base-header-color, 30% ) 1%, lighten( $base-header-color, 100% ) 100% );
@@ -110,8 +114,9 @@ a.base.bttn{
 
 	& h1{
 		@include adjust-font-size-to( 28px );
-		@include single-text-shadow( $base-color, -1px, 1px, 2px );
+		@include single-text-shadow( #bbb, 2px );
 		@include margin-trailer(0.25);
+
 	}
 
 	& #add_commute_form{
@@ -156,6 +161,7 @@ a.base.bttn{
 		display:block;
 		height:320px;
 		width: $map-width;
+        border: 1px solid $light-grey;
 		//margin-left:auto;
 		//margin-right:auto;
 	}
