@@ -36,6 +36,10 @@ GETTING STARTED
         pip install -r requirements.txt
         gem install bundler
         bundle install
+        foreman start
+
+8. You can then load <http://localhost:8000> in your browser to see the
+   project.
 
 [bruno]: http://bruno.im/2011/sep/29/streamline-your-django-workflow/
 [vew]: http://www.doughellmann.com/projects/virtualenvwrapper/
