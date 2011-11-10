@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+	"http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<!-- Processed by MultiMarkdown -->
+		<meta name="Format" content="complete" />
+	</head>
+<body>
+
+<p>Welcome to the ottozen code repository.</p>
+
+<p>This document is written in 
+<a href="http://daringfireball.net/projects/markdown/">Markdown</a>
+(or more specifically,
+<a href="http://fletcherpenney.net/multimarkdown/">MultiMarkdown</a>).
+The original is README.md, and the generated is README.html - make changes to
+the original, and John Whitlock can regenerate the HTML version.</p>
+
+<h1 id="gettingstarted">GETTING STARTED</h1>
+
+<ol>
+<li>Contact Luke Crouch to get your credentials added to the sourcehold account</li>
+<li>git clone git@sourcehold.com:groovecoder/ottozen.git</li>
+<li>Install:
+<ul><li><a href="http://www.python.org/getit/">Python</a> - Tested with Python 2.6.7</li>
+<li><a href="http://pypi.python.org/pypi/setuptools">setuptools</a> - for <code>easy_install</code></li>
+<li><a href="http://www.virtualenv.org/en/latest/index.html">virtualenv</a> - use
+<code>sudo easy_install virtualenv</code> or system package</li>
+<li><a href="http://www.doughellmann.com/projects/virtualenvwrapper/">virtualenvwrapper</a> - use <code>sudo easy_install virtualenvwrapper</code> or
+system package</li>
+<li><a href="http://www.ruby-lang.org/en/downloads/">Ruby</a> - Tested with Ruby 1.8.7</li>
+<li><a href="http://rubygems.org/">RubyGems</a> - Tested with RubyGems 1.3.6</li></ul></li>
+<li>Follow the <a href="http://www.doughellmann.com/docs/virtualenvwrapper/">virtualenvwrapper docs</a> to update your environment, and
+make a new virtual environment with <code>mkvirtualenv ottozen</code>.  You should
+automatically enter the environment, change into the ottozen directory.</li>
+<li>Leave the virtualenv by running <code>deactivate</code></li>
+<li><p>Following the instructions on <a href="http://bruno.im/2011/sep/29/streamline-your-django-workflow/">this site</a>, edit the postactivate 
+script in your virtualenv folder to add:</p>
+
+<pre><code>export GEM_HOME="$VIRTUAL_ENV/gems"
+export GEM_PATH=""
+export PATH=$PATH:$GEM_HOME/</code></pre></li>
+<li><p>Run <code>workon ottozen</code> to enter the virtual environment, then run:</p>
+
+<pre><code>pip install -r requirements.txt
+gem install bundler
+bundle install
+foreman start</code></pre></li>
+<li><p>You can then load <a href="http://localhost:8000">http://localhost:8000</a> in your browser to see the
+project.</p></li>
+</ol>
+</body>
+</html>
