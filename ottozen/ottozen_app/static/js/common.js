@@ -188,7 +188,7 @@
             }
         };
         me.loadTrifIncidents = function(){
-            $.getJSON('http://trif.tulsawebdevs.org/alerts/incidents.jsonp?callback=?', me.drawTrifPins);
+            $.getJSON('http://localhost:9002/alerts/incidents.jsonp?callback=?', me.drawTrifPins);
         };
 		me.getRoute = function(){
 			//console.log( 'me.getRoute', me.startAddy, me.endAddy, me.waypoints );
@@ -207,8 +207,8 @@
 				//disable double click zoom when route is showing
 				me.map.setOptions({ disableDoubleClickZoom: true });
 				//console.log('directions gotten', response, me.currentRoute);
-				//make a confirm button
-				me.printConfirmBttn();
+				//show the signup button
+                $('button#signup').show();
 				//display the directions on the map
 				me.directionsDisplay.setMap( me.map );
 				me.directionsDisplay.setDirections(response);
@@ -225,15 +225,6 @@
 				//me.map.setOptions({ disableDoubleClickZoom: false });
 			}
 		};
-		me.printConfirmBttn = function(){
-			if ( !me.confirmBttn ) {
-				me.confirmBttn = $('<button />', { id: 'add_commute_confirm', text: 'Route is correct' })
-					.click(me.confirmClick)
-					.insertBefore( me.cont );
-			} else {
-				me.confirmBttn.show();
-			}
-		};
 		me.confirmClick = function(){
 			//everything is alright, so submit the form
 			//console.log('confirmation clicked', me.form.serialize(), me.waypoints );
@@ -244,6 +235,7 @@
 		me.configureForm = function(){
 			//get that
 			me.form = $('#add_commute_form');
+            me.form.find('button#signup').hide();
 
 			if ( $('#user-routes').length && $('#user-routes').find('.route').length ) {
 				var routes = $('#user-routes').find('.route');

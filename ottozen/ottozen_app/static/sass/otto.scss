@@ -7,8 +7,7 @@ $leftnav-width: floor( $base-width * 0.15 );
 $rightnav-width: 200px;
 $container-margin: 20px;
 $maincont-width: $base-width - $rightnav-width - $container-margin * 2;
-$add-form-width: 200px;
-$map-width: $maincont-width - $add-form-width - $container-margin *2;
+$map-width: $maincont-width - $container-margin *2;
 
 
 body{
@@ -120,9 +119,7 @@ a.base.bttn{
 	}
 
 	& #add_commute_form{
-		@include float-right;
 		display:block;
-		width: $add-form-width;
 		
 		@include margin-leader;
 		@include margin-trailer;
@@ -132,6 +129,10 @@ a.base.bttn{
 			//margin-left: 0.5em;
 			//margin-right: 0.5em;
 		}
+
+        & fieldset{
+            float: left;
+        }
 		
 		& label{
 			color: darken( $base-button-color, 1% );
@@ -145,7 +146,6 @@ a.base.bttn{
 		
 		& input{
 			@include margin-trailer;
-			width: $add-form-width - $container-margin * 2;
 			@include adjust-font-size-to(14px, 1.5);
 			padding-left: 0.5em;
 			padding-right: 0.5em;
