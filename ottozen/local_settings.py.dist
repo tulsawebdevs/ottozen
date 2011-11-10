@@ -1,4 +1,5 @@
 # Copy this to local_settings.py 
+from settings import *
 
 DEBUG=True
 

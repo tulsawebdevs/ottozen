@@ -1,6 +1,7 @@
 *.pyc
 *.swp
 *.db
+local_settings.py
 
 # Added by sharing a folder on OS X 
 .com.apple.timemachine.supported
