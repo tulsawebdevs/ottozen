@@ -62,7 +62,7 @@ class Alert(models.Model):
 # Create your models here.
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    mobile_num = models.CharField(max_length=10, default='918.......')
+    mobile_num = models.CharField(max_length=11, default='1918.......')
     email_confirmed = models.BooleanField(default=False)
     mobile_confirmed = models.BooleanField(default=False)
     ok_to_email = models.BooleanField(default=False)
