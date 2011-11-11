@@ -118,7 +118,7 @@ a.base.bttn{
 
 	}
 
-	& #add_commute_form{
+	& #route_form{
 		display:block;
 		
 		@include margin-leader;
@@ -166,11 +166,6 @@ a.base.bttn{
 		//margin-right:auto;
 	}
 	
-}
-
-
-
-#add_commute_form{
 }
 
 

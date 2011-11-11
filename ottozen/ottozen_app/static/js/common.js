@@ -83,7 +83,6 @@
 		me.startAddy = '';
 		me.endAddy = '';
 		me.currentRoute = null;
-		me.confirmBttn;
 		me.waypoints = [];
 		me.dblclickListener;
 
@@ -207,8 +206,11 @@
 				//disable double click zoom when route is showing
 				me.map.setOptions({ disableDoubleClickZoom: true });
 				//console.log('directions gotten', response, me.currentRoute);
-				//show the signup button
-                $('button#signup').show();
+				// activate and show the watch button
+                $('button#watch').click(function(){
+                    $('#route_form').submit();
+                });
+                $('button#watch').show();
 				//display the directions on the map
 				me.directionsDisplay.setMap( me.map );
 				me.directionsDisplay.setDirections(response);
@@ -225,53 +227,39 @@
 				//me.map.setOptions({ disableDoubleClickZoom: false });
 			}
 		};
-		me.confirmClick = function(){
-			//everything is alright, so submit the form
-			//console.log('confirmation clicked', me.form.serialize(), me.waypoints );
-			if ( me.waypoints.length )
-				me.form.find('[name="waypoints"]').val( JSON.stringify( me.waypoints ) );
-               $.post(window.location.href, $('#add_commute_form').serialize())
-		};
 		me.configureForm = function(){
 			//get that
-			me.form = $('#add_commute_form');
-            me.form.find('button#signup').hide();
+			me.form = $('#route_form');
+            me.form.find('button#watch').hide();
+            me.form.find('button#check').click(me.checkRoute);
 
 			if ( $('#user-routes').length && $('#user-routes').find('.route').length ) {
 				var routes = $('#user-routes').find('.route');
-				
+
 				var time = routes.last().attr('time');
 				me.startAddy = routes.last().children().first().attr('addy');
 				me.endAddy = routes.last().children().last().attr('addy');
-				
+
 				me.form.find('[name="start_address"]').val( me.startAddy );
 				me.form.find('[name="end_address"]').val( me.endAddy );
 				me.form.find('[name="time"]').val( time );
 				console.log('ROUTES!', routes);
-				
+
 				me.getRoute();
 			}
-			
-			//handle that
-			me.form.submit(me.formSubmit);
 		};
-		me.formSubmit = function(e){
-			e.preventDefault();
+		me.checkRoute = function(e){
+            e.preventDefault();
 			//clear the waypoints
 			me.waypoints = [];
-			//hide the confirm button if it was showing
-			if ( me.confirmBttn )
-				me.confirmBttn.hide();
-			//console.log( 'form submit', me.form.serialize() );
 			//get the start and end inputs to send to google.
 			me.startAddy = me.form.find('[name="start_address"]').val(),
 			me.endAddy= me.form.find('[name="end_address"]').val();
 			if( me.startAddy && me.endAddy )
 				me.getRoute();
-			//console.log( 'form submit', me.startAddy, me.endAddy );
 		};
 		me.init();
 		return me;
 	}
-	
+
 })(jQuery)

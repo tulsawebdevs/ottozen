@@ -33,7 +33,7 @@
 		{% endfor %}
 	</ol>
 
-	<form id="add_commute_form" action="/commutes/add" method="post">
+	<form id="route_form" action="/route" method="post">
 		<input type="hidden" name="user" value="{{user.id}}" />
 		<input type="hidden" name="waypoints" value="" />
 		<!--<label>Start Time:</label>
@@ -48,8 +48,8 @@
         </fieldset>
         <fieldset>
             <label>&nbsp;</label>
-            <button class="base bttn" value="checkroute" type="submit">Check Route</button>
-            <button id="signup" class="base bttn" value="signup" type="submit" href="/account">Sign Up!</button>
+            <button id="check" class="base bttn" value="checkroute">Check Route</button>
+            <button id="watch" class="base bttn" value="watchroute">Watch Route</button>
         </fieldset>
 		{% csrf_token %}
 	</form>

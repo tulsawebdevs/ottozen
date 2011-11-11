@@ -89,6 +89,17 @@ def old_add(request):
     return create_object(request, model=Route, login_required=True,
         post_save_redirect='/commutes/add')
 
+def route(request, id):
+    if request.method == 'POST':
+        if request.user:
+            # store the route in the database for the user
+            pass
+        else:
+            # store the route in session
+            # will store route in database for the user after
+            # we create the user
+            request.session['route'] = request.POST['route']
+            return redirect('account')
 
 def account(request, email):
     user = None
@@ -105,7 +116,7 @@ def account(request, email):
                 send_confirmation_text(user, mobile_num)
                 user = auth.authenticate(username=user.username, password=request.POST['password'])
                 auth.login(request, user)
-                redirect('myroutes')
+                return redirect('myroutes')
             else:
                 # passwords didn't match
                 pass
@@ -121,10 +132,6 @@ def account_sms_confirm(request):
     profile.mobile_confirmed = True
     profile.save()
     return render(request, 'account_sms_confirm.xml', {'Sms': THANK_YOU_TEXT}, content_type='application/xml')
-
-def route(request):
-
-    pass
 
 def old_profile(request):
     try:
