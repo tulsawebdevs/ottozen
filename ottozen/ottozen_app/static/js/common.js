@@ -188,7 +188,7 @@
             }
         };
         me.loadTrifIncidents = function(){
-            $.getJSON('http://localhost:9002/alerts/incidents.jsonp?callback=?', me.drawTrifPins);
+            $.getJSON('http://trif.tulsawebdevs.org/alerts/incidents.jsonp?callback=?', me.drawTrifPins);
         };
 		me.getRoute = function(){
 			//console.log( 'me.getRoute', me.startAddy, me.endAddy, me.waypoints );
