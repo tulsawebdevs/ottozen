@@ -1,4 +1,4 @@
-
+from django.contrib import auth
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -34,7 +34,7 @@ def myroutes(request):
 def phone(request):
   return render(request, 'phone.html')
 
-def do_login(request):
+def login(request):
   form = LoginForm(request.REQUEST)
   if form.is_valid():
     user = None
@@ -63,10 +63,10 @@ def do_login(request):
       message = "We couldn't find a matching mobile number or email"
       status = 401
     else:
-      a_user = authenticate(username=user.username, password=password)
+      a_user = auth.authenticate(username=user.username, password=password)
       if a_user is not None:
         if a_user.is_active:
-          login(request, a_user)
+          auth.login(request, a_user)
           message = "OK"
           status = 200
         else:
@@ -81,8 +81,8 @@ def do_login(request):
 
   return HttpResponse(message, status=status)
 
-def do_logout(request):
-  logout(request)
+def logout(request):
+  auth.logout(request)
   return redirect('home')
 
 def old_add(request):
@@ -97,9 +97,18 @@ def account(request, email):
     if request.method == 'POST':
         mobile_num = to_e164(request.POST['mobile_num'])
         if not user:
-            user = User.objects.create(username=request.POST['email'], password=request.POST['password'], email=request.POST['email'])
-            UserProfile.objects.create(user=user)
-            send_confirmation_text(user, mobile_num)
+            if request.POST['password'] == request.POST['confirm']:
+                user = User.objects.create(username=request.POST['email'], email=request.POST['email'])
+                user.set_password(request.POST['password'])
+                user.save()
+                UserProfile.objects.create(user=user)
+                send_confirmation_text(user, mobile_num)
+                user = auth.authenticate(username=user.username, password=request.POST['password'])
+                auth.login(request, user)
+                redirect('myroutes')
+            else:
+                # passwords didn't match
+                pass
         profile_data = {'mobile_num': mobile_num}
         UserProfile.objects.filter(user=user).update(**profile_data)
     profile = user.get_profile() if user else None
@@ -112,6 +121,10 @@ def account_sms_confirm(request):
     profile.mobile_confirmed = True
     profile.save()
     return render(request, 'account_sms_confirm.xml', {'Sms': THANK_YOU_TEXT}, content_type='application/xml')
+
+def route(request):
+
+    pass
 
 def old_profile(request):
     try:
