@@ -10,4 +10,3 @@ class LoginForm(forms.Form):
 class ProfileForm(ModelForm):
   class Meta:
     model = UserProfile
-    

@@ -1,18 +1,17 @@
-from django.contrib.auth import authenticate, login, logout
+
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.create_update import create_object
+from django.views.decorators.csrf import csrf_exempt
 
 from forms import LoginForm, ProfileForm
 from models import Point, Route, RoutePoint, UserProfile
+from utils import to_e164, send_confirmation_text, THANK_YOU_TEXT
 
 def home(request):
   return render(request, 'home.html')# Create your views here.
 
-def signup(request):
-  return render(request, 'signup.html')
-  
 def myroutes(request):
   try:
     profile = request.user.get_profile()
@@ -23,7 +22,7 @@ def myroutes(request):
 
   profile = request.user.get_profile()
   print profile.mobile_num
-  
+
   for route in routes:
     print route.waypoints
 
@@ -31,7 +30,7 @@ def myroutes(request):
       print waypoint
 
   return render(request, 'myroutes.html', {'mobile_num': profile.mobile_num, 'routes': routes})
-    
+
 def phone(request):
   return render(request, 'phone.html')
 
@@ -41,25 +40,25 @@ def do_login(request):
     user = None
     ident = form.cleaned_data['dummy_name']
     password = form.cleaned_data['password']
-    
+
     if not user:
       try:
         user = User.objects.get(email=ident)
       except User.DoesNotExist:
         pass
-    
+
     if not user:
       try:
         user = UserProfile.objects.get(mobile_num=ident).user
       except UserProfile.DoesNotExist:
         pass
-    
+
     if not user:
       try:
         user = User.objects.get(username=ident)
       except User.DoesNotExist:
         pass
-    
+
     if not user:
       message = "We couldn't find a matching mobile number or email"
       status = 401
@@ -79,7 +78,7 @@ def do_login(request):
   else:
     message = 'Please enter all fields'
     status = 401
-    
+
   return HttpResponse(message, status=status)
 
 def do_logout(request):
@@ -89,6 +88,30 @@ def do_logout(request):
 def old_add(request):
     return create_object(request, model=Route, login_required=True,
         post_save_redirect='/commutes/add')
+
+
+def account(request, email):
+    user = None
+    if email:
+        user = get_object_or_404(User, username=email)
+    if request.method == 'POST':
+        mobile_num = to_e164(request.POST['mobile_num'])
+        if not user:
+            user = User.objects.create(username=request.POST['email'], password=request.POST['password'], email=request.POST['email'])
+            UserProfile.objects.create(user=user)
+            send_confirmation_text(user, mobile_num)
+        profile_data = {'mobile_num': mobile_num}
+        UserProfile.objects.filter(user=user).update(**profile_data)
+    profile = user.get_profile() if user else None
+    return render(request, 'account.html', {'user': user, 'profile': profile})
+
+@csrf_exempt
+def account_sms_confirm(request):
+    mobile_num = to_e164(request.POST['From'])
+    profile = UserProfile.objects.get(mobile_num=mobile_num)
+    profile.mobile_confirmed = True
+    profile.save()
+    return render(request, 'account_sms_confirm.xml', {'Sms': THANK_YOU_TEXT}, content_type='application/xml')
 
 def old_profile(request):
     try:

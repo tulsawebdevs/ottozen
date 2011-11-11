@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Otto Zen : Account{% endblock %}
+
+{% block body %}
+<style>
+.signupbox{
+background:#ddd;
+height:200px;
+width:300px;
+margin:1em;
+}
+.signupbox td{
+padding:1em;
+}
+.signupbox .text{
+color:#ddd;
+}
+</style>
+
+<h1>How do we contact you?</h1>
+<form action="/account" method="post">
+    {% csrf_token %}
+<table class="signupbox">
+	<tr>
+		<td><label>Email:</label></td>
+        <td> <input type="text" name="email" value="{{ user.email }}"  placeholder="myname@email.com"></td>
+	</tr>
+	<tr>
+		<td><label>Password:</label></td>
+		<td> <input type="password" name="password" value=""  placeholder=""></td>
+	</tr>
+	<tr>
+		<td><label>Confirm:</label></td>
+		<td> <input type="password" name="confirm" value=""  placeholder=""></td>
+	</tr>
+	<tr>
+		<td><label>Mobile #:</label></td>
+        <td> <input type="text" name="mobile_num" value="{{ profile.mobile_num }}" placeholder="123-456-7890"></td>
+	</tr>
+</table>
+  <div>
+	  <p>To confirm your mobile number, click the button below:</p>
+	  	<input type="submit" value="Send me a test text" class="base bttn" />
+  </div>
+</form>
+
+{% endblock %}

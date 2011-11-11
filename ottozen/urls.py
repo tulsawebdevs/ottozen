@@ -5,9 +5,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('ottozen_app.views',
     url(r'^$', 'home', name='home'),
-    url(r'^accounts/profile/?', 'old_profile', name='old_profile'),
     url(r'^commutes/add/?', 'old_add', name='old_add'),
-    url(r'^signup/?', 'signup', name='signup'),
+    url(r'^account/sms$', 'account_sms_confirm', name='account_sms_confirm'),
+    url(r'^account/?(?P<email>.+)?$', 'account', name='account'),
     url(r'^myroutes/?', 'myroutes', name='myroutes'),
     url(r'^phone/?', 'phone', name='phone'),
     url(r'^login/?', 'do_login', name='login'),
