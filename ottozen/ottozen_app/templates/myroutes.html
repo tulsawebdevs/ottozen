@@ -29,6 +29,17 @@
 
 <h2>My Routes</h2>
 
+<ol id="user-routes">
+{% for route in routes %}
+	<li class="route" route="{{ route }}" time="{{ route.start_time }}">
+		<b>{{ route.start_address }}</b> to <b>{{ route.end_address }}</b>
+	</li>
+{% endfor %}
+</ol>
+
+<ul>
+
+{% comment %}
 <h3>Route 1 {{routename}}</h2>
 <div id="mapwrap" style="float:left">
 	<div id="gmapCont"></div>
@@ -48,18 +59,9 @@
   	<button type="submit">Add</button>
   </form>
 </div>
+{% endcomment %}
 
 <div class="clearfix"></div>
-
-<ol id="user-routes">
-{% for route in user.routes.all %}
-	<li class="route" route="{{ route }}" time="{{ route.start_time }}">
-		{% for point in route.waypoints.all %}
-		  <span class="point" point="{{ point }}" addy="{{ point.address }}" lat="{{ point.latitude }}" lng="{{ point.longitude }}">{{ point.address }}</span>
-		{% endfor %}
-    </li>
-{% endfor %}
-</ol>
 
 <a href="#" class="base bttn">Add a Route</a>
 
