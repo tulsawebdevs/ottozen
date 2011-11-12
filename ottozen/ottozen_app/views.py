@@ -93,7 +93,7 @@ def old_add(request):
 
 def route(request, id):
     if request.method == 'POST':
-        if request.user:
+        if request.user.is_authenticated():
             # store the route in the database for the user
             r = Route(user=request.user, json=request.POST['route_json'])
             r.save()
@@ -122,6 +122,13 @@ def account(request, email):
                 send_confirmation_text(user, mobile_num)
                 user = auth.authenticate(username=user.username, password=request.POST['password'])
                 auth.login(request, user)
+                try:
+                  route_json = request.session['route_json']
+                except IndexError:
+                  pass
+                else:
+                  r = Route(user=request.user, json=route_jsonend)
+                  r.save()
                 return redirect('myroutes')
             else:
                 # passwords didn't match
