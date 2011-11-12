@@ -1,3 +1,6 @@
+import json
+import re
+
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -19,17 +22,16 @@ def myroutes(request):
     profile = UserProfile.objects.create(user=request.user)
 
   routes = Route.objects.filter(user=request.user)
-
-  profile = request.user.get_profile()
-  print profile.mobile_num
-
   for route in routes:
-    print route.waypoints
+    r = json.loads(route.json)[0]
+    route.start_address = r['legs'][0]['start_address']
+    route.end_address = r['legs'][0]['end_address']
+    tulsa_cleaner = r',\sTulsa,\sOK\s74\d{3}, USA'
+    route.start_address = re.sub(tulsa_cleaner, '', route.start_address)
+    route.end_address = re.sub(tulsa_cleaner, '', route.end_address)
 
-    for waypoint in route.waypoints.order_by('routepoint__sequence').all():
-      print waypoint
-
-  return render(request, 'myroutes.html', {'mobile_num': profile.mobile_num, 'routes': routes})
+  return render(request, 'myroutes.html',
+    {'mobile_num': profile.mobile_num, 'routes': routes})
 
 def phone(request):
   return render(request, 'phone.html')
