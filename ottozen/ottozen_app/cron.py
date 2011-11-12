@@ -37,27 +37,23 @@ def store_alerts():
 
     routes = Route.objects.get_timely_routes()
     for route in routes:
-        directions_url = 'http://maps.googleapis.com/maps/api/directions/json?origin=%s&destination=%s&sensor=false' % (quote(route.start_address), quote(route.end_address))
-        directions_response = requests.get(directions_url)
-        directions = json.loads(directions_response.content)
-        route = directions['routes'][0]
-        prev_end_location = None
-        for leg in route['legs']:
+        directions = json.loads(route.json)
+        route_json = directions[0]
+        for leg in route_json['legs']:
             for step in leg['steps']:
                 start_location = step['start_location']
                 end_location = step['end_location']
                 for alert in incidents['alerts']:
-                    distance_from_start = haversine(alert['geo']['longitude'], alert['geo']['latitude'], start_location['lng'], start_location['lat'])
-                    distance_from_end = haversine(alert['geo']['longitude'], alert['geo']['latitude'], end_location['lng'], end_location['lat'])
+                    distance_from_start = haversine(alert['geo']['longitude'], alert['geo']['latitude'], start_location['Pa'], start_location['Oa'])
+                    distance_from_end = haversine(alert['geo']['longitude'], alert['geo']['latitude'], end_location['Pa'], end_location['Oa'])
                     if distance_from_start < 2 or distance_from_end < 2:
-                        # distance_from_prev_end_to_current_start = haversine(prev_end_location['lng'], prev_end_location['lat'], start_location['lng'], start_location['lat'])
                         existing_alert = Alert.objects.filter(route=route, user=route.user, created__year=now.year, created__month=now.month, created__day=now.day)
                         if not existing_alert:
                             text = 'Oh noes! %s %s' % (alert['description'], alert['title'])
+                            print(text)
                             alert = Alert.objects.create(route=route, user=route.user,
                                                          sent=False, text=text)
                             alert.save()
-                prev_end_location = end_location
 
 @cronjobs.register
 def send_alerts():
