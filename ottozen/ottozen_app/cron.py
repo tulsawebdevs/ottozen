@@ -80,13 +80,14 @@ def send_alerts():
                                          created__day=now.day,
                                          sent=False)
     for alert in unsent_alerts:
-        try:
-            client.sms.messages.create(
-                to=alert.user.get_profile().mobile_num,
-                from_=settings.TWILIO_NUMBER,
-                body=alert.text)
-            alert.sent=True
-            alert.save()
-        except:
-            pass
-        print("Sent text: %s" % alert.text)
+        if alert.user.get_profile().mobile_confirmed:
+            try:
+                client.sms.messages.create(
+                    to=alert.user.get_profile().mobile_num,
+                    from_=settings.TWILIO_NUMBER,
+                    body=alert.text)
+                alert.sent=True
+                alert.save()
+            except:
+                pass
+            print("Sent text: %s" % alert.text)
