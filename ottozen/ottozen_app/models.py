@@ -30,7 +30,7 @@ class Point(models.Model):
 class Route(models.Model):
     user = models.ForeignKey(User, related_name='routes')
     start_time = models.TimeField(null=True)
-    waypoints = models.ManyToManyField(Point, through='RoutePoint')
+    json = models.TextField(blank=True)
 
     objects = RouteManager()
 
