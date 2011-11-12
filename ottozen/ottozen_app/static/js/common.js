@@ -207,10 +207,12 @@
 				me.map.setOptions({ disableDoubleClickZoom: true });
 				//console.log('directions gotten', response, me.currentRoute);
 				// activate and show the watch button
-                $('button#watch').click(function(){
-                    $('#route_form').submit();
-                });
-                $('button#watch').show();
+				$('button#watch').click(function(e){
+					$('[name=route_json]').val(
+						JSON.stringify(me.currentRoute));
+					$('#route_form').submit();
+				});
+				$('button#watch').show();
 				//display the directions on the map
 				me.directionsDisplay.setMap( me.map );
 				me.directionsDisplay.setDirections(response);

@@ -93,13 +93,17 @@ def route(request, id):
     if request.method == 'POST':
         if request.user:
             # store the route in the database for the user
-            pass
+            r = Route(user=request.user, json=request.POST['route_json'])
+            r.save()
+            return redirect('myroutes')
         else:
             # store the route in session
             # will store route in database for the user after
             # we create the user
-            request.session['route'] = request.POST['route']
+            request.session['route_json'] = request.POST['route_json']
             return redirect('account')
+    else:
+        return redirect('home')
 
 def account(request, email):
     user = None
