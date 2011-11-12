@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 class RouteManager(models.Manager):
-    def get_timely_commutes(self):
+    def get_timely_routes(self):
         now = datetime.now()
         buffer = timedelta(minutes=10)
         range_start = now - buffer
