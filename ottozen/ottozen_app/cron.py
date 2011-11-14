@@ -43,15 +43,19 @@ def store_alerts():
             for step in leg['steps']:
                 start_location = step['start_location']
                 end_location = step['end_location']
+                print "step from %s to %s" % (start_location, end_location)
                 for alert in incidents['alerts']:
+                    print "alert at %s, %s" % (alert['geo']['longitude'], alert['geo']['latitude'])
                     distance_from_start = haversine(alert['geo']['longitude'],
                                                     alert['geo']['latitude'],
-                                                    start_location['Pa'],
-                                                    start_location['Oa'])
+                                                    start_location['Qa'],
+                                                    start_location['Pa'])
                     distance_from_end = haversine(alert['geo']['longitude'],
                                                   alert['geo']['latitude'],
-                                                  end_location['Pa'],
-                                                  end_location['Oa'])
+                                                  end_location['Qa'],
+                                                  end_location['Pa'])
+                    print "distance from start: %s" % distance_from_start
+                    print "distance from end: %s" % distance_from_end
                     if distance_from_start < 2 or distance_from_end < 2:
                         existing_alert = Alert.objects.filter(
                                                     route=route,
