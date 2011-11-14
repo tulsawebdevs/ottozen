@@ -1,6 +1,3 @@
-import json
-import re
-
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -9,11 +6,14 @@ from django.views.generic.create_update import create_object
 from django.views.decorators.csrf import csrf_exempt
 
 from forms import LoginForm, ProfileForm
-from models import Point, Route, RoutePoint, UserProfile
+from models import Route, UserProfile
 from utils import to_e164, send_confirmation_text, THANK_YOU_TEXT
 
 def home(request):
-  return render(request, 'home.html')# Create your views here.
+    routes = None
+    if not request.user.is_anonymous():
+        routes = Route.objects.filter(user=request.user)
+    return render(request, 'home.html', {'routes': routes})
 
 def myroutes(request):
   try:
@@ -22,13 +22,6 @@ def myroutes(request):
     profile = UserProfile.objects.create(user=request.user)
 
   routes = Route.objects.filter(user=request.user)
-  for route in routes:
-    r = json.loads(route.json)[0]
-    route.start_address = r['legs'][0]['start_address']
-    route.end_address = r['legs'][0]['end_address']
-    tulsa_cleaner = r',\sTulsa,\sOK\s74\d{3}, USA'
-    route.start_address = re.sub(tulsa_cleaner, '', route.start_address)
-    route.end_address = re.sub(tulsa_cleaner, '', route.end_address)
 
   return render(request, 'myroutes.html',
     {'mobile_num': profile.mobile_num, 'routes': routes})

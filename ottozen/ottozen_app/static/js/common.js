@@ -87,13 +87,18 @@
 		me.dblclickListener;
 
 		me.init = function(){
-			//console.log('herro init', me, 'google', google);
-			//configure form and handlers
+			//configure main commute form
 			me.configureForm();
+            $('li.route button.check-commute').each(function(){
+                $(this).click(function(){
+                    var startAddy = $(this).parent('li').attr('data-start-address');
+                    var endAddy = $(this).parent('li').attr('data-end-address');
+                    me.getRoute(startAddy, endAddy);
+                });
+            });
 
 			//find the container
 			me.cont = document.getElementById( me.contId );
-			//console.log('container', me.cont, $(me.cont) );
 			//set the google center
 			me.center = new google.maps.LatLng( me.centerLat, me.centerLng );
 			//get the map
@@ -105,16 +110,15 @@
             me.loadTrifIncidents();
 			//add a dblclick listener to deal with way points
 			google.maps.event.addListener( me.map, 'dblclick', me.mapDoubleClick, false );
-			};
-			me.mapDoubleClick = function(e){
-			//console.log('mapDblClick', e);
+        };
+        me.mapDoubleClick = function(e){
 			//make sure route is rendered
 			if ( me.currentRoute ) {
 
 				//me.waypoints.push( new google.maps.LatLng( e.latLng.Ma, e.latLng.Na ) );
 				me.waypoints.push( { location: e.latLng, stopover: false } );
-
-				me.getRoute();
+                var route_leg = me.currentRoute[0].legs[0];
+				me.getRoute(route_leg.start_address, route_leg.end_address);
 
 				//console.log( 'current route & waypoint:', me.currentRoute, me.waypoints );
 			}
@@ -189,12 +193,12 @@
         me.loadTrifIncidents = function(){
             $.getJSON('http://trif.tulsawebdevs.org/alerts/incidents.jsonp?callback=?', me.drawTrifPins);
         };
-		me.getRoute = function(){
+		me.getRoute = function(startAddy, endAddy){
 			//console.log( 'me.getRoute', me.startAddy, me.endAddy, me.waypoints );
 			me.directionsService.route({
 				//origin: ttp.geo.userLocation,
-				origin: me.startAddy,
-				destination: me.endAddy,
+				origin: startAddy,
+				destination: endAddy,
 				travelMode: google.maps.TravelMode.DRIVING,
 				optimizeWaypoints: true,
 				waypoints: me.waypoints
@@ -234,31 +238,17 @@
 			me.form = $('#route_form');
             me.form.find('button#watch').hide();
             me.form.find('button#check').click(me.checkRoute);
-
-			if ( $('#user-routes').length && $('#user-routes').find('.route').length ) {
-				var routes = $('#user-routes').find('.route');
-
-				var time = routes.last().attr('time');
-				me.startAddy = routes.last().children().first().attr('addy');
-				me.endAddy = routes.last().children().last().attr('addy');
-
-				me.form.find('[name="start_address"]').val( me.startAddy );
-				me.form.find('[name="end_address"]').val( me.endAddy );
-				me.form.find('[name="time"]').val( time );
-				console.log('ROUTES!', routes);
-
-				me.getRoute();
-			}
 		};
 		me.checkRoute = function(e){
+            var startAddy, endAddy;
             e.preventDefault();
 			//clear the waypoints
 			me.waypoints = [];
 			//get the start and end inputs to send to google.
-			me.startAddy = me.form.find('[name="start_address"]').val(),
-			me.endAddy= me.form.find('[name="end_address"]').val();
-			if( me.startAddy && me.endAddy )
-				me.getRoute();
+			startAddy = me.form.find('[name="start_address"]').val(),
+			endAddy= me.form.find('[name="end_address"]').val();
+			if( startAddy && endAddy )
+				me.getRoute(startAddy, endAddy);
 		};
 		me.init();
 		return me;

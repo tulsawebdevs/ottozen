@@ -23,6 +23,17 @@
 </div>
 
 <div id="maincont">
+{% if routes and False %}
+    <h3>Your Commutes</h3>
+    <ol id="user-routes">
+{% for route in routes %}
+<li class="route" route="{{ route }}" time="{{ route.start_time }}" data-start-address="{{route.start_address}}" data-end-address="{{route.end_address}}">
+		<b>{{ route.start_address }}</b> to <b>{{ route.end_address }}</b>
+        <button class="check-commute">Check Commute</button>
+	</li>
+{% endfor %}
+    </ol>
+{% endif %}
 
 	<h1>What's your commute?</h1>
 	<ol>

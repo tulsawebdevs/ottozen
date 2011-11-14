@@ -1,9 +1,12 @@
 from datetime import datetime, timedelta
+import json
+import re
 
 from django.db import models
 #from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
+TULSA_CLEAN_REGEX = r',\sTulsa,\sOK\s74\d{3}, USA'
 
 class RouteManager(models.Manager):
     def get_timely_routes(self):
@@ -34,10 +37,21 @@ class Route(models.Model):
 
     objects = RouteManager()
 
+    @property
+    def start_address(self):
+        r = json.loads(self.json)[0]
+        start_address = r['legs'][0]['start_address']
+        return re.sub(TULSA_CLEAN_REGEX, '', start_address)
+
+    @property
+    def end_address(self):
+        r = json.loads(self.json)[0]
+        end_address = r['legs'][0]['end_address']
+        return re.sub(TULSA_CLEAN_REGEX, '', end_address)
+
     def __unicode__(self):
       return "Route %s %s" % (self.user.username, self.id)
-#        return self.user.username + ' from ' + self.start_address + ' to ' + self.end_address
- 
+
 
 class RoutePoint(models.Model):
     route = models.ForeignKey(Route)
