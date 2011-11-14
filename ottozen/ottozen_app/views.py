@@ -112,29 +112,28 @@ def account(request, email):
     if email:
         user = get_object_or_404(User, username=email)
     if request.method == 'POST':
+        email = request.POST['email']
         mobile_num = to_e164(request.POST['mobile_num'])
+        password = request.POST['password']
         if not user:
-            if request.POST['password'] == request.POST['confirm']:
-                user = User.objects.create(username=request.POST['email'], email=request.POST['email'])
-                user.set_password(request.POST['password'])
+            if password == request.POST['confirm']:
+                user = User.objects.create(username=email, email=email)
+                user.set_password(password)
                 user.save()
-                UserProfile.objects.create(user=user)
+                UserProfile.objects.create(user=user).save()
                 send_confirmation_text(user, mobile_num)
-                user = auth.authenticate(username=user.username, password=request.POST['password'])
+                user = auth.authenticate(username=user.username, password=password)
                 auth.login(request, user)
                 try:
                   route_json = request.session['route_json']
                 except IndexError:
                   pass
                 else:
-                  r = Route(user=request.user, json=route_json)
+                  r = Route(user=request.user, json=route_json, start_time=request.POST['start_time'])
                   r.save()
-                return redirect('myroutes')
-            else:
-                # passwords didn't match
-                pass
         profile_data = {'mobile_num': mobile_num}
         UserProfile.objects.filter(user=user).update(**profile_data)
+        return redirect('myroutes')
     profile = user.get_profile() if user else None
     return render(request, 'account.html', {'user': user, 'profile': profile})
 
