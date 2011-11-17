@@ -5,12 +5,12 @@ This document is written in
 (or more specifically,
 [MultiMarkdown](http://fletcherpenney.net/multimarkdown/)).
 The original is README.md, and the generated is README.html - make changes to
-the original, and John Whitlock can regenerate the HTML version.
+the original, and John or Luke can regenerate the HTML version.
 
 GETTING STARTED
 ===============
-1. Contact Luke Crouch to get your credentials added to the sourcehold account
-2. git clone git@sourcehold.com:groovecoder/ottozen.git
+1. Contact Luke Crouch to get your credentials added to the bitbucket repository
+2. git clone https://groovecoder@bitbucket.org/groovecoder/ottozen.git
 3. Install:
   * [Python](http://www.python.org/getit/) - Tested with Python 2.6.7
   * [setuptools](http://pypi.python.org/pypi/setuptools) - for `easy_install`
