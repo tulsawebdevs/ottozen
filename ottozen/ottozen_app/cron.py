@@ -34,8 +34,10 @@ def store_alerts():
     trif_url = 'http://trif.tulsawebdevs.org/alerts/incidents.json'
     incidents_response = requests.get(trif_url)
     incidents = json.loads(incidents_response.content)
+    print("Found %s incidents." % len(incidents['alerts']))
 
     routes = Route.objects.get_timely_routes()
+    print("Found %s routes to check." % len(routes))
     for route in routes:
         directions = json.loads(route.json)
         route_json = directions[0]
@@ -43,9 +45,9 @@ def store_alerts():
             for step in leg['steps']:
                 start_location = step['start_location']
                 end_location = step['end_location']
-                print "step from %s to %s" % (start_location, end_location)
+                #print "step from %s to %s" % (start_location, end_location)
                 for alert in incidents['alerts']:
-                    print "alert at %s, %s" % (alert['geo']['longitude'], alert['geo']['latitude'])
+                    #print "alert at %s, %s" % (alert['geo']['longitude'], alert['geo']['latitude'])
                     distance_from_start = haversine(alert['geo']['longitude'],
                                                     alert['geo']['latitude'],
                                                     start_location['Qa'],
@@ -54,8 +56,8 @@ def store_alerts():
                                                   alert['geo']['latitude'],
                                                   end_location['Qa'],
                                                   end_location['Pa'])
-                    print "distance from start: %s" % distance_from_start
-                    print "distance from end: %s" % distance_from_end
+                    #print "distance from start: %s" % distance_from_start
+                    #print "distance from end: %s" % distance_from_end
                     if distance_from_start < 2 or distance_from_end < 2:
                         existing_alert = Alert.objects.filter(
                                                     route=route,
